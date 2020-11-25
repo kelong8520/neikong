@@ -117,11 +117,11 @@ export default {
               name: "zzzzpd",
               icon: "el-icon-document"
             },
-            {
-              title: "1.3.3织造纬纱盘点明细",
-              name: "zzwspd",
-              icon: "el-icon-document"
-            },
+            // {
+            //   title: "1.3.3织造纬纱盘点明细",
+            //   name: "zzwspd",
+            //   icon: "el-icon-document"
+            // },
             {
               title: "1.3.4织造坯布盘点明细",
               name: "zzpbpd",

@@ -15,22 +15,22 @@
           <el-button
             type="primary"
             @click.native="resetClick"
-            style="width:100px;marginLeft:10px;"
+            class="button1"
           >重新计算</el-button>
           <el-button
             type="primary"
             @click.native="searchClick"
-            style="width:100px;marginLeft:10px;"
+            class="button1"
           >检索</el-button>
           <el-button
             type="primary"
             @click.native="sureClick"
-            style="width:100px;marginLeft:10px;"
+            class="button1"
           >确定存入</el-button>
           <el-button
             type="primary"
             @click.native="financialClick"
-            style="width:100px;marginLeft:10px;"
+            class="button1"
           >财务审核</el-button>
         </el-form-item>
       </el-form>
@@ -187,11 +187,11 @@ export default {
       bzpApi
         .addJiangRan(_data)
         .then(res => {
-          if (!res.data) {
+          // if (!res.data) {
             this.$message({ message: res.tipInfo, duration: 2000 });
-          } else {
+          // } else {
             this.loadInfo();
-          }
+          // }
           this.loading = false;
         })
         .catch(err => {
@@ -253,5 +253,5 @@ export default {
 </script>
 
 <style scoped>
-/* @import "./../../assets/css/common.css"; */
+@import "./../../assets/css/common.css";
 </style>

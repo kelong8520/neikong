@@ -70,7 +70,38 @@ export const ZhiZhouSheHe = (data) => {
 }
 
 //  1.3.3 织造纬纱盘点明细
-
+//  织造坯布盘点明细
+export const getWeiShaShaiXuan = (params) => {
+    return api({
+        url: "/api/banZhiPin/getWeiShaShaiXuan",
+        method: "get",
+        params
+    })
+}
+//  重新计算
+export const getWeiSha = (data) => {
+    return api({
+        url: "/api/banZhiPin/getWeiSha",
+        method: "post",
+        data
+    })
+}
+//  确定存入
+export const addWeiSha = (data) => {
+    return api({
+        url: "/api/banZhiPin/addWeiSha",
+        method: "post",
+        data
+    })
+}
+//  财务审核
+export const WeiShaSheHe = (data) => {
+    return api({
+        url: "/api/banZhiPin/WeiShaSheHe",
+        method: "post",
+        data
+    })
+}
 
 //  1.3.4 织造坯布盘点明细
 //  织造坯布盘点明细

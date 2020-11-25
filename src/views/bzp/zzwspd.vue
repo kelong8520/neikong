@@ -12,22 +12,22 @@
           <el-button
             type="primary"
             @click.native="calculateClick"
-            style="width:100px;marginLeft:20px;"
+            class="button1"
           >重新计算</el-button>
           <el-button
             type="primary"
             @click.native="searchClick"
-            style="width:100px;marginLeft:20px;"
+            class="button1"
           >检索</el-button>
           <el-button
             type="primary"
             @click.native="sureClick"
-            style="width:100px;marginLeft:20px;"
+            class="button1"
           >确定存入</el-button>
           <el-button
             type="primary"
             @click.native="financialClick"
-            style="width:100px;marginLeft:20px;"
+            class="button1"
           >财务审核</el-button>
         </el-form-item>
       </el-form>
@@ -50,55 +50,57 @@
           <span v-else>{{scope.$index}}</span>
         </template>
       </el-table-column>
-      <el-table-column prop="id" label="纬纱名称" align="center"></el-table-column>
-      <el-table-column label="审批状态" align="center">
+      <el-table-column prop="productionNo" label="生产单号" align="center" width="120"></el-table-column>
+      <el-table-column prop="batchNo" label="缸号" align="center"></el-table-column>
+      <el-table-column prop="yarnName" label="纬纱名称" align="center" width="180"></el-table-column>
+      <el-table-column label="审批状态" align="center" width="70">
         <template slot-scope="scope">
           <div>{{scope.row.state == 0?"未审核":scope.row.state == 1?"已审核":""}}</div>
         </template>
       </el-table-column>
       <el-table-column label="期初库存" align="center">
-        <el-table-column prop="gh" label="重量(kg)" align="center"></el-table-column>
-        <el-table-column prop="gh" label="个数" align="center"></el-table-column>
+        <el-table-column prop="weightQC" label="重量(kg)" align="center"></el-table-column>
+        <el-table-column prop="geShuQC" label="个数" align="center"></el-table-column>
       </el-table-column>
       <el-table-column label="本期领入" align="center">
-        <el-table-column prop="ys" label="重量(kg)" align="center"></el-table-column>
-        <el-table-column prop="ys" label="个数" align="center"></el-table-column>
+        <el-table-column prop="weightLR" label="重量(kg)" align="center"></el-table-column>
+        <el-table-column prop="geShuLR" label="个数" align="center"></el-table-column>
       </el-table-column>
-      <el-table-column prop="ys" label="本期投入" align="center"></el-table-column>
-      <el-table-column prop="zjcd" label="本期结存" align="center"></el-table-column>
+      <el-table-column prop="weightTR" label="本期投入" align="center"></el-table-column>
+      <el-table-column prop="weightJC" label="本期结存" align="center"></el-table-column>
       <el-table-column label="实际盘点数量" align="center">
         <el-table-column label="重量(kg)" align="center">
           <template slot-scope="scope">
-            <div v-if="scope.$index == 0">{{scope.row.xmmx}}</div>
+            <div v-if="scope.$index == 0">{{scope.row.weightReal}}</div>
             <div v-else>
-              <el-input v-model="scope.row.xmmx"></el-input>
+              <el-input v-model="scope.row.weightReal"></el-input>
             </div>
           </template>
         </el-table-column>
         <el-table-column label="个数" align="center">
           <template slot-scope="scope">
-            <div v-if="scope.$index == 0">{{scope.row.xmmx}}</div>
+            <div v-if="scope.$index == 0">{{scope.row.geShuReal}}</div>
             <div v-else>
-              <el-input v-model="scope.row.xmmx"></el-input>
+              <el-input v-model="scope.row.geShuReal"></el-input>
             </div>
           </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column prop="xmmx" label="系统实物盘点差" align="center"></el-table-column>
+      <el-table-column prop="weightPanDianCha" label="系统实物盘点差" align="center"></el-table-column>
       <el-table-column label="最终确认盘点结存" align="center">
         <el-table-column label="重量(kg)" align="center">
           <template slot-scope="scope">
-            <div v-if="scope.$index == 0">{{scope.row.jianShuJieCun}}</div>
+            <div v-if="scope.$index == 0">{{scope.row.weightJieCun}}</div>
             <div v-else>
-              <el-input v-model="scope.row.jianShuJieCun"></el-input>
+              <el-input v-model="scope.row.weightJieCun"></el-input>
             </div>
           </template>
         </el-table-column>
         <el-table-column label="个数" align="center">
           <template slot-scope="scope">
-            <div v-if="scope.$index == 0">{{scope.row.lengthJieCun}}</div>
+            <div v-if="scope.$index == 0">{{scope.row.geShuJieCun}}</div>
             <div v-else>
-              <el-input v-model="scope.row.lengthJieCun"></el-input>
+              <el-input v-model="scope.row.geShuJieCun"></el-input>
             </div>
           </template>
         </el-table-column>
@@ -140,7 +142,7 @@ export default {
       this.loading = true;
       let _data = this.ruleForm;
       bzpApi
-        .getHouZhengShaiXuan(_data)
+        .getWeiShaShaiXuan(_data)
         .then(res => {
           this.baseTableData = res.data;
           this.loading = false;
@@ -160,7 +162,7 @@ export default {
           this.loading = true;
           let _data = this.ruleForm;
           bzpApi
-            .getHouZheng(querystring.stringify(_data))
+            .getWeiSha(querystring.stringify(_data))
             .then(res => {
               if (!res.data) {
                 this.$message({ message: res.tipInfo, duration: 2000 });
@@ -180,13 +182,13 @@ export default {
       this.loading = true;
       let _data = this.baseTableData;
       bzpApi
-        .addHouZheng(_data)
+        .addWeiSha(_data)
         .then(res => {
-          if (!res.data) {
+          // if (!res.data) {
             this.$message({ message: res.tipInfo, duration: 2000 });
-          } else {
+          // } else {
             this.loadInfo();
-          }
+          // }
           this.loading = false;
         })
         .catch(err => {
@@ -206,7 +208,7 @@ export default {
             choiceDate: this.ruleForm.choiceDate
           };
           bzpApi
-            .HouZhengSheHe(querystring.stringify(_data))
+            .WeiShaSheHe(querystring.stringify(_data))
             .then(res => {
               this.$message({ message: res.tipInfo, duration: 2000 });
               this.loading = false;
@@ -218,12 +220,12 @@ export default {
         })
         .catch(() => {});
     },
-    // 加载默认页面
+    // 加载默认页面 
     loadInfo() {
       this.loading = true;
       let _data = this.ruleForm;
       bzpApi
-        .getHouZhengShaiXuan(_data)
+        .getWeiShaShaiXuan(_data)
         .then(res => {
           this.baseTableData = res.data;
           this.loading = false;
@@ -250,5 +252,5 @@ export default {
 </script>
 
 <style scoped>
-/* @import "./../../assets/css/common.css"; */
+@import "./../../assets/css/common.css";
 </style>
