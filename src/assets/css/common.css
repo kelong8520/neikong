@@ -1,0 +1,5 @@
+/* 通用样式 */
+/*  1.3模块form表单样式  */
+.el-form--inline .el-form-item {
+    margin-right: 20px;
+}
