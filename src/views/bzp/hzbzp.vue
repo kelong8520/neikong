@@ -137,7 +137,6 @@ export default {
       tableHeight: window.innerHeight - 200, //table高度
       baseTableData: [],
       ruleForm: {},
-      // choiceDate: new Date(),
       colIndex: "",
       loading: false
     };

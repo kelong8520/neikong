@@ -6,7 +6,7 @@
           <el-submenu :index="String(item)" v-for="(work,item) in sixList" :key="item">
             <template slot="title">
               <i class="el-icon-menu"></i>
-              <span slot="title" style="color:#fff;"> {{work.title}}</span>
+              <span slot="title" style="color:#fff;">{{work.title}}</span>
             </template>
             <el-menu-item-group>
               <el-menu-item
@@ -16,7 +16,7 @@
                 :key="idx"
                 @click="addTabs(model.name,model.title)"
                 style="color:#fff;"
-              > {{model.title}}</el-menu-item>
+              >{{model.title}}</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
@@ -27,12 +27,12 @@
           <div @click="switchClcik" style="padding:10px;width:15px;">
             <i class="el-icon-s-fold" style="width:20px;height:20px;"></i>
           </div>
-          <WorkBench></WorkBench>
+          <WorkBench @reload="reload"></WorkBench>
         </el-header>
 
         <el-main class="mainBackground">
           <div class="pagetitle" v-if="$route.path =='/index'">内控及生产成本管理</div>
-          <router-view></router-view>
+          <router-view v-if="flag"></router-view>
         </el-main>
       </el-container>
     </el-container>
@@ -81,27 +81,27 @@ export default {
               title: "1.1.4汇率维护",
               name: "hlwh",
               icon: "el-icon-data-analysis"
-            },
+            }
           ]
         },
         {
           title: "1.2 分工序投入产出明细",
           model: [
-            // {
-            //   title: "1.2.1原料投入数据",
-            //   name: "yltr",
-            //   icon: "el-icon-document"
-            // },
-            // {
-            //   title: "1.2.2辅料投入数据",
-            //   name: "fltr",
-            //   icon: "el-icon-document"
-            // },
-            // {
-            //   title: "1.2.3能耗投入数据",
-            //   name: "nhtr",
-            //   icon: "el-icon-document"
-            // }
+            {
+              title: "1.2.1原料投入数据",
+              name: "yltr",
+              icon: "el-icon-document"
+            },
+            {
+              title: "1.2.2辅料投入数据",
+              name: "fltr",
+              icon: "el-icon-document"
+            },
+            {
+              title: "1.2.3能耗投入数据",
+              name: "nhtr",
+              icon: "el-icon-document"
+            }
           ]
         },
         {
@@ -134,57 +134,58 @@ export default {
             }
           ]
         },
-        // {
-        //   title: "1.4 成品汇总及分析",
-        //   model: [
-        //     {
-        //       title: "1.4.1原料分析",
-        //       name: "ylfx",
-        //       icon: "el-icon-document"
-        //     },
-        //     {
-        //       title: "1.4.2辅料分析",
-        //       name: "flfx",
-        //       icon: "el-icon-document"
-        //     },
-        //     {
-        //       title: "1.4.3能耗分析",
-        //       name: "nhfx",
-        //       icon: "el-icon-document"
-        //     },
-        //   ]
-        // },
-        // {
-        //   title: "1.5 实际生产成本核算",
-        //   model: [
-        //     {
-        //       title: "1.5.1月度机物料费用",
-        //       name: "jwlfy",
-        //       icon: "el-icon-document"
-        //     },
-        //     {
-        //       title: "1.5.2月度人工费用",
-        //       name: "rgfy",
-        //       icon: "el-icon-document"
-        //     },
-        //     {
-        //       title: "1.5.3成本核算",
-        //       name: "cbhs",
-        //       icon: "el-icon-document"
-        //     },
-        //   ]
-        // },
-        // {
-        //   title: "1.6 生产单耗环比分析",
-        //   model: [
-        //     {
-        //       title: "1.6.1月度生产单耗环比分析",
-        //       name: "ydscd",
-        //       icon: "el-icon-document"
-        //     },
-        //   ]
-        // }
-      ]
+        {
+          title: "1.4 成品汇总及分析",
+          model: [
+            {
+              title: "1.4.1原料分析",
+              name: "ylfx",
+              icon: "el-icon-document"
+            },
+            {
+              title: "1.4.2辅料分析",
+              name: "flfx",
+              icon: "el-icon-document"
+            },
+            {
+              title: "1.4.3能耗分析",
+              name: "nhfx",
+              icon: "el-icon-document"
+            }
+          ]
+        },
+        {
+          title: "1.5 实际生产成本核算",
+          model: [
+            {
+              title: "1.5.1月度机物料费用",
+              name: "jwlfy",
+              icon: "el-icon-document"
+            },
+            {
+              title: "1.5.2月度人工费用",
+              name: "rgfy",
+              icon: "el-icon-document"
+            },
+            {
+              title: "1.5.3成本核算",
+              name: "cbhs",
+              icon: "el-icon-document"
+            },
+          ]
+        },
+        {
+          title: "1.6 生产单耗环比分析",
+          model: [
+            {
+              title: "1.6.1月度生产单耗环比分析",
+              name: "ydscd",
+              icon: "el-icon-document"
+            },
+          ]
+        }
+      ],
+      flag: true
     };
   },
   methods: {
@@ -194,6 +195,12 @@ export default {
       } else {
         this.accord = true;
       }
+    },
+    reload() {
+      this.flag = false;
+      this.$nextTick(() => {
+        this.flag = true;
+      });
     },
     // 添加 tabs
     addTabs(name, title) {
@@ -224,10 +231,10 @@ export default {
 .el-menu-vertical-demo li {
   background-color: #0a1420;
 }
-.el-menu{
+.el-menu {
   border-right: 0;
 }
-.el-submenu .el-menu-item{
+.el-submenu .el-menu-item {
   min-width: 100%;
 }
 /* 侧边栏 :hover颜色 */

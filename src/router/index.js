@@ -106,19 +106,19 @@ const routes = [
           {
             path: '/ylfx',
             name: 'ylfx',
-            component: () => import("@/views/cptr/ylfx"),
+            component: () => import("@/views/cpfx/ylfx"),
           },
           // 1.4.2辅料分析
           {
             path: '/flfx',
             name: 'flfx',
-            component: () => import("@/views/cptr/flfx"),
+            component: () => import("@/views/cpfx/flfx"),
           },
           // 1.4.3能耗分析
           {
             path: '/nhfx',
             name: 'nhfx',
-            component: () => import("@/views/cptr/nhfx"),
+            component: () => import("@/views/cpfx/nhfx"),
           },
 
           // 1.5 实际生产成本核算

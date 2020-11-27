@@ -1,20 +1,37 @@
 <template>
   <div id="tabs">
-    <el-tabs
-      v-model="editableTabsValue"
-      type="border-card"
-      @edit="handleRemove"
-      @tab-click="handleCheck"
-    >
-      <el-tab-pane
-        :key="item.name"
-        v-for="(item,idx) in editableTabs"
-        :label="item.title"
-        :name="item.name"
-        :closable="idx != 0"
-      ></el-tab-pane>
-    </el-tabs>
-    <span style="display:none;">{{tabName}}</span>
+    <el-col :span="22">
+      <el-tabs
+        v-model="editableTabsValue"
+        type="border-card"
+        @edit="handleRemove"
+        @tab-click="handleCheck"
+      >
+        <el-tab-pane
+          :key="item.name"
+          v-for="(item,idx) in editableTabs"
+          :label="item.title"
+          :name="item.name"
+          :closable="idx != 0"
+        ></el-tab-pane>
+      </el-tabs>
+      <span style="display:none;">{{tabName}}</span>
+    </el-col>
+    <el-col :span="2" style="paddingLeft:20px;">
+      <el-dropdown>
+        <el-button style="padding:10px;margin:2px 0 0 10px;">
+          <i class="el-icon-arrow-down el-icon--center"></i>
+        </el-button>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>
+            <div @click="reload">刷新当前页面</div>
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <div @click="close">关闭所有页面</div>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </el-col>
   </div>
 </template>
 
@@ -43,6 +60,30 @@ export default {
     }
   },
   methods: {
+    close() {
+      this.editableTabs.forEach((item, i) => {
+        if (i > 1) {
+          this.editableTabs.splice(1);
+        }
+      });
+    },
+    reload() {
+      this.$emit("reload");
+      // let index;
+      //   this.editableTabs.forEach((item,i) => {
+      //       let name;
+      //       if(item.id){
+      //         name=item.name+'?'+item.id
+      //       }else{
+      //         name=item.name
+      //       }
+      //       if(name == this.tabName){
+      //       index= i
+
+      //       }
+      //     })
+      //      store.commit("reload", index)
+    },
     handleRemove(modelName, operation) {
       if (operation == "remove") {
         let newName = "";
@@ -76,7 +117,7 @@ export default {
   margin: 0;
   height: 40px;
 }
-.el-tabs__nav-wrap.is-scrollable{
+.el-tabs__nav-wrap.is-scrollable {
   margin: 0 10px;
 }
 .el-tabs--card > .el-tabs__header .el-tabs__item {

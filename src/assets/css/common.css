@@ -1,10 +1,19 @@
 /* 通用样式 */
+
 /*  1.3模块form表单样式  */
+
 /* .el-form--inline .el-form-item {
     margin-right: 20px;
 } */
+
 /*  1.3模块button按钮样式  */
-.button1{
-    width:100px;
-    margin-left:10px;
+
+.button1 {
+    width: 100px;
+    margin-left: 10px;
+}
+/*  1.2模块分页样式  */
+.fy {
+    text-align: center;
+    margin-top: 20px;
 }
