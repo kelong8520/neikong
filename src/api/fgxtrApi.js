@@ -21,5 +21,14 @@ import api from "@/utils/http"
 // }
 
 
+// 辅料投入
+// 辅料投入数据
+export const getFLInputData = (data) => {
+    return api({
+        url: "/api/ProcessInputOutput/getFLInputData",
+        method: "post",
+        data
+    })
+}
 
 

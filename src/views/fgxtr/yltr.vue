@@ -133,7 +133,7 @@ export default {
       pageSize: 20, //每页的数据条数
       currentPage: 1, //默认开始页面
       screenHeight: document.body.clientHeight, //屏幕高度
-      tableHeight: window.innerHeight - 300, //table高度
+      tableHeight: window.innerHeight - 270, //table高度
       baseTableData: [
         {
           id: "原料",
@@ -328,7 +328,7 @@ export default {
     loadInfo() {
       // this.loading = true;
       // let _data = this.ruleForm;
-      // bzpApi
+      // fgxtrApi
       //   .getHouZhengShaiXuan(_data)
       //   .then(res => {
       //     this.baseTableData = res.data;
@@ -347,8 +347,8 @@ export default {
     var date = new Date();
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
-    // var day = date.getDate();
-    var time = year + "-" + month;
+    var day = date.getDate();
+    var time = year + "-" + month + "-" + day;
     this.$set(this.ruleForm, "choiceDate", time);
     this.loadInfo();
   }

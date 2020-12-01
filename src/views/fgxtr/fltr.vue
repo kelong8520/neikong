@@ -3,25 +3,25 @@
     <div style="borderBottom: 1px solid #ccc;">
       <el-form :inline="true" class="demo-form-inline" ref="ruleForm" :model="ruleForm">
         <el-form-item label="生产单号">
-          <el-input v-model="ruleForm.val"></el-input>
+          <el-input v-model="ruleForm.productionNo"></el-input>
         </el-form-item>
         <el-form-item label="色号">
-          <el-input v-model="ruleForm.val"></el-input>
+          <el-input v-model="ruleForm.colorNo"></el-input>
         </el-form-item>
         <el-form-item label="布编">
-          <el-input v-model="ruleForm.val"></el-input>
+          <el-input v-model="ruleForm.textileNo"></el-input>
         </el-form-item>
         <el-form-item label="缸号">
-          <el-input v-model="ruleForm.val"></el-input>
+          <el-input v-model="ruleForm.batchNo"></el-input>
         </el-form-item>
         <el-form-item label="染色日期">
-          <el-date-picker v-model="ruleForm.val" type="date"></el-date-picker>
+          <el-date-picker v-model="ruleForm.ranSeDate" type="date"></el-date-picker>
         </el-form-item>
         <el-form-item label="上浆日期">
-          <el-date-picker v-model="ruleForm.val" type="date"></el-date-picker>
+          <el-date-picker v-model="ruleForm.shangJiangDate" type="date"></el-date-picker>
         </el-form-item>
         <el-form-item label="后整日期">
-          <el-date-picker v-model="ruleForm.val" type="date"></el-date-picker>
+          <el-date-picker v-model="ruleForm.houZhengDate" type="date"></el-date-picker>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click.native="searchList" class="button1">检索</el-button>
@@ -42,15 +42,15 @@
     >
       <el-table-column label="基本信息" align="center">
         <el-table-column type="index" label="序号" align="center">
-          <template slot-scope="scope">
+          <!-- <template slot-scope="scope">
             <span v-if="scope.$index === 0"></span>
             <span v-else>{{scope.$index}}</span>
-          </template>
+          </template> -->
         </el-table-column>
-        <el-table-column prop="id" label="生产单号" align="center"></el-table-column>
-        <el-table-column prop="gh" label="布编" align="center"></el-table-column>
-        <el-table-column prop="ys" label="色号" align="center"></el-table-column>
-        <el-table-column prop="ys" label="缸号" align="center"></el-table-column>
+        <el-table-column prop="productionNos" label="生产单号" align="center"></el-table-column>
+        <el-table-column prop="textileNos" label="布编" align="center"></el-table-column>
+        <el-table-column prop="colorNo" label="色号" align="center"></el-table-column>
+        <el-table-column prop="batchNo" label="缸号" align="center"></el-table-column>
       </el-table-column>
       <el-table-column label="染色辅料用量" align="center">
         <el-table-column label="染色日期" align="center">
@@ -59,15 +59,15 @@
               :href="'http://www.baidu.com?' + scope.row.id"
               target="_blank"
               style="color:blue;"
-            >{{scope.row.ys}}</a>
+            >{{scope.row.ranSeDatetime}}</a>
           </template>
         </el-table-column>
-        <el-table-column prop="zjcd" label="投入长度(m)" align="center"></el-table-column>
-        <el-table-column prop="zjcd" label="靛蓝(Kg)" align="center"></el-table-column>
-        <el-table-column prop="zjcd" label="烧碱(Kg)" align="center"></el-table-column>
-        <el-table-column prop="zjcd" label="保险粉(Kg)" align="center"></el-table-column>
-        <el-table-column prop="zjcd" label="渗透剂(Kg)" align="center"></el-table-column>
-        <el-table-column prop="csxm" label="扩散剂(Kg)" align="center"></el-table-column>
+        <el-table-column prop="zhengJingLengthRS" label="投入长度(m)" align="center"></el-table-column>
+        <el-table-column prop="wanMiDianLanReal" label="靛蓝(Kg)" align="center"></el-table-column>
+        <el-table-column prop="wanMiShaoJianReal" label="烧碱(Kg)" align="center"></el-table-column>
+        <el-table-column prop="wanMiBaoXianFenReal" label="保险粉(Kg)" align="center"></el-table-column>
+        <el-table-column prop="wanMiShenTouJiReal" label="渗透剂(Kg)" align="center"></el-table-column>
+        <el-table-column prop="wanMiKuoSanJiReal" label="扩散剂(Kg)" align="center"></el-table-column>
       </el-table-column>
       <el-table-column label="上浆辅料用量" align="center">
         <el-table-column label="上浆日期" align="center">
@@ -76,13 +76,13 @@
               :href="'http://www.baidu.com?' + scope.row.id"
               target="_blank"
               style="color:blue;"
-            >{{scope.row.zjcd}}</a>
+            >{{scope.row.shangJiangDatetime}}</a>
           </template>
         </el-table-column>
-        <el-table-column prop="csxm" label="投入长度(m)" align="center"></el-table-column>
-        <el-table-column prop="csxm" label="高粘淀粉(Kg)" align="center"></el-table-column>
-        <el-table-column prop="csxm" label="低粘淀粉(Kg)" align="center"></el-table-column>
-        <el-table-column prop="csxm" label="SS浆料(Kg)" align="center"></el-table-column>
+        <el-table-column prop="zhengJingLength" label="投入长度(m)" align="center"></el-table-column>
+        <el-table-column prop="realGndfStandardKg" label="高粘淀粉(Kg)" align="center"></el-table-column>
+        <el-table-column prop="realDndfStandardKg" label="低粘淀粉(Kg)" align="center"></el-table-column>
+        <el-table-column prop="realSsjlStandardKg" label="SS浆料(Kg)" align="center"></el-table-column>
       </el-table-column>
       <el-table-column label="后整理辅料用量" align="center">
         <el-table-column label="后整理日期" align="center">
@@ -91,14 +91,16 @@
               :href="'http://www.baidu.com?' + scope.row.id"
               target="_blank"
               style="color:blue;"
-            >{{scope.row.gybzz}}</a>
+            >{{scope.row.houZhengDate}}</a>
           </template>
         </el-table-column>
-        <el-table-column prop="gybzz" label="投入长度(m)" align="center"></el-table-column>
-        <el-table-column prop="gybzz" label="烧碱(Kg)" align="center"></el-table-column>
-        <el-table-column prop="gybzz" label="退浆剂①(Kg)" align="center"></el-table-column>
-        <el-table-column prop="gybzz" label="退浆剂②(Kg)" align="center"></el-table-column>
-        <el-table-column prop="gybzz" label="柠檬酸(Kg)" align="center"></el-table-column>
+        <el-table-column prop="touPiLength" label="投入长度(m)" align="center"></el-table-column>
+        <el-table-column prop="tuiJiangShaoJianRealKg" label="退浆烧碱(Kg)" align="center"></el-table-column>
+        <el-table-column prop="siGuangShaoJianRealKg" label="丝光烧碱(Kg)" align="center"></el-table-column>
+        <el-table-column prop="tuiJiangTuiJiangJi1RealKg" label="退浆剂①(Kg)" align="center"></el-table-column>
+        <el-table-column prop="tuiJiangTuiJiangJi2RealKg" label="退浆剂②(Kg)" align="center"></el-table-column>
+        <el-table-column prop="tuiJiangNingMengSuanRealKg" label="退浆柠檬酸(Kg)" align="center"></el-table-column>
+        <el-table-column prop="siGuangNingMengSuanRealKg" label="丝光柠檬酸(Kg)" align="center"></el-table-column>
       </el-table-column>
     </el-table>
     <el-pagination
@@ -124,7 +126,7 @@ export default {
       pageSize: 20, //每页的数据条数
       currentPage: 1, //默认开始页面
       screenHeight: document.body.clientHeight, //屏幕高度
-      tableHeight: window.innerHeight - 300, //table高度
+      tableHeight: window.innerHeight - 270, //table高度
       baseTableData: [
         {
           id: "原料",
@@ -313,21 +315,21 @@ export default {
   },
   methods: {
     arraySpanMethod({ row, column, rowIndex, columnIndex }) {
-      if (rowIndex === 0) {
-        if (columnIndex === 1) {
-          return [1, 4];
-        } else if (columnIndex == 2) {
-          return [0, 0];
-        } else if (columnIndex == 3) {
-          return [0, 0];
-        } else if (columnIndex == 4) {
-          return [0, 0];
-        } else if (columnIndex <= 35) {
-          return [1, 1];
-        } else {
-          return [0, 0];
-        }
-      }
+      // if (rowIndex === 0) {
+      //   if (columnIndex === 1) {
+      //     return [1, 4];
+      //   } else if (columnIndex == 2) {
+      //     return [0, 0];
+      //   } else if (columnIndex == 3) {
+      //     return [0, 0];
+      //   } else if (columnIndex == 4) {
+      //     return [0, 0];
+      //   } else if (columnIndex <= 35) {
+      //     return [1, 1];
+      //   } else {
+      //     return [0, 0];
+      //   }
+      // }
     },
     // 分页
     currentChange(currentPage) {
@@ -337,17 +339,19 @@ export default {
     searchList() {},
     // 加载默认页面
     loadInfo() {
-      // this.loading = true;
-      // let _data = this.ruleForm;
-      // bzpApi
-      //   .getHouZhengShaiXuan(_data)
-      //   .then(res => {
-      //     this.baseTableData = res.data;
-      //     this.loading = false;
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
+      this.loading = true;
+      this.$set(this.ruleForm,"pageIndex",this.currentPage)
+      this.$set(this.ruleForm,"pageSize",this.pageSize)
+      let _data = this.ruleForm;
+      fgxtrApi
+        .getFLInputData(querystring.stringify(_data))
+        .then(res => {
+          this.baseTableData = res.data;
+          this.loading = false;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   mounted() {
@@ -355,12 +359,12 @@ export default {
       this.screenHeight = document.body.clientHeight;
       this.tableHeight = this.screenHeight - 200;
     };
-    var date = new Date();
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
+    // var date = new Date();
+    // var year = date.getFullYear();
+    // var month = date.getMonth() + 1;
     // var day = date.getDate();
-    var time = year + "-" + month;
-    this.$set(this.ruleForm, "choiceDate", time);
+    // var time = year + "-" + month + "-" + day;
+    // this.$set(this.ruleForm, "choiceDate", time);
     this.loadInfo();
   }
 };

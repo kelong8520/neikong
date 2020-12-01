@@ -140,6 +140,54 @@ const routes = [
             name: 'cbhs',
             component: () => import("@/views/sccb/cbhs"),
           },
+          // 子界面1
+          {
+            path: '/interface1',
+            name: 'interface1',
+            component: () => import("@/views/sccb/interface/interface1"),
+          },
+          // 子界面2
+          {
+            path: '/interface2',
+            name: 'interface2',
+            component: () => import("@/views/sccb/interface/interface2"),
+          },
+          // 子界面3
+          {
+            path: '/interface3',
+            name: 'interface3',
+            component: () => import("@/views/sccb/interface/interface3"),
+          },
+          // 子界面4
+          {
+            path: '/interface4',
+            name: 'interface4',
+            component: () => import("@/views/sccb/interface/interface4"),
+          },
+          // 子界面5
+          {
+            path: '/interface5',
+            name: 'interface5',
+            component: () => import("@/views/sccb/interface/interface5"),
+          },
+          // 子界面6
+          {
+            path: '/interface6',
+            name: 'interface6',
+            component: () => import("@/views/sccb/interface/interface6"),
+          },
+          // 子界面7
+          {
+            path: '/interface7',
+            name: 'interface7',
+            component: () => import("@/views/sccb/interface/interface7"),
+          },
+          // 子界面8
+          {
+            path: '/interface8',
+            name: 'interface8',
+            component: () => import("@/views/sccb/interface/interface8"),
+          },
 
           // 1.6 月度生产单耗环比分析
           // 1.6.1月度生产单耗环比分析

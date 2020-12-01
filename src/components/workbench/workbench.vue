@@ -11,9 +11,11 @@
           :key="item.name"
           v-for="(item,idx) in editableTabs"
           :label="item.title"
-          :name="item.name"
+          :name="`${item.id?item.name+'?'+item.id:item.name}`"
           :closable="idx != 0"
-        ></el-tab-pane>
+        >
+      
+        </el-tab-pane>
       </el-tabs>
       <span style="display:none;">{{tabName}}</span>
     </el-col>
@@ -55,7 +57,7 @@ export default {
   },
   watch: {
     tabName(val) {
-      // console.log(val)
+       console.log(val)
       this.editableTabsValue = val;
     }
   },
@@ -85,25 +87,53 @@ export default {
       //      store.commit("reload", index)
     },
     handleRemove(modelName, operation) {
+      // console.log(modelName, operation)
       if (operation == "remove") {
         let newName = "";
         // 判断当前关闭的模块，是不是活跃的模块，如果是则自动显示到前一个，如果不是则不改变
         if (modelName == this.tabName) {
           this.editableTabs.forEach((item, i) => {
-            if (item.name == modelName) {
-              newName = this.editableTabs[i - 1].name;
+            let name;
+            if (item.id) {
+              name = item.name + "?" + item.id;
+            } else {
+              name = item.name;
+            }
+            if (name == modelName) {
+              if (this.editableTabs[i - 1].id) {
+                newName =
+                  this.editableTabs[i - 1].name +
+                  "?" +
+                  this.editableTabs[i - 1].id;
+              } else {
+                newName = this.editableTabs[i - 1].name;
+              }
             }
           });
           store.commit("deleteTabArr", modelName);
           store.commit("modifyTabName", newName);
-          this.$router.push({ name: newName });
+          if (newName.includes("?")) {
+            this.$router.push({
+              name: newName.split("?")[0],
+              query: { id: newName.split("?")[1] }
+            });
+          } else {
+            this.$router.push({ name: newName });
+          }
         } else {
           store.commit("deleteTabArr", modelName);
         }
       }
     },
     handleCheck(insteance) {
-      this.$router.push({ name: insteance.paneName });
+      if (insteance.paneName.includes("?")) {
+        this.$router.push({
+          name: insteance.paneName.split("?")[0],
+          query: { id: insteance.paneName.split("?")[1] }
+        });
+      } else {
+        this.$router.push({ name: insteance.paneName });
+      }
       store.commit("modifyTabName", insteance.paneName);
     }
   }

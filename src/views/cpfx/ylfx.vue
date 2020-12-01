@@ -91,7 +91,7 @@
 </template>
 
 <script>
-import * as cptrApi from "@/api/cptrApi.js";
+import * as cpfxApi from "@/api/cpfxApi.js";
 import querystring from "querystring";
 
 export default {
@@ -140,8 +140,8 @@ export default {
     var date = new Date();
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
-    // var day = date.getDate();
-    var time = year + "-" + month;
+    var day = date.getDate();
+    var time = year + "-" + month + "-" + day;
     this.$set(this.ruleForm, "choiceDate", time);
     this.loadInfo();
   }

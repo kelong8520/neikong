@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div style="borderBottom: 1px solid #ccc;">
+    <!-- <div style="borderBottom: 1px solid #ccc;">
       <el-form :inline="true" class="demo-form-inline" ref="ruleForm" :model="ruleForm">
         <el-form-item label="时间">
-          <el-date-picker v-model="ruleForm.val" type="date"></el-date-picker>
+          <el-date-picker v-model="ruleForm.val1" type="date"></el-date-picker>
         </el-form-item>
         <el-form-item label="——">
-          <el-date-picker v-model="ruleForm.val" type="date"></el-date-picker>
+          <el-date-picker v-model="ruleForm.val2" type="date"></el-date-picker>
         </el-form-item>
         <el-form-item>
           <el-button
@@ -16,10 +16,10 @@
           >筛选</el-button>
         </el-form-item>
       </el-form>
-    </div>
+    </div> -->
     <el-table
       highlight-current-row
-      style="width: 100%"
+      style="width: 100%;marginTop:30px;"
       max-height="600"
       ref="table"
       :border="true"
@@ -130,14 +130,14 @@
         </el-table-column>
 
     </el-table>
-    <el-pagination
+    <!-- <el-pagination
       class="fy"
       background
       :page-size="pageSize"
       layout="prev, pager, next"
       :total="total"
       @current-change="currentChange"
-    ></el-pagination>
+    ></el-pagination> -->
   </div>
 </template>
 
@@ -163,9 +163,6 @@ export default {
       this.currentPage = currentPage;
     },
     searchList() {},
-    refreshList() {
-      this.ruleForm = {};
-    }
   },
   mounted() {}
 };

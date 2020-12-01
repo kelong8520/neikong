@@ -16,11 +16,19 @@ const mutations = {
     // 添加tab数组
     addTabArr(state, model){
       state.tabArr.push(model)
-      state.tabName = model.name;
+      if (model.id) {
+        state.tabName = model.name + '?' + model.id;
+      } else {
+        state.tabName = model.name;
+      }
     }, 
     // 删除tab数组
     deleteTabArr(state, modelName){
-      state.tabArr = state.tabArr.filter(item => item.name != modelName)
+      if (modelName.includes('?')) {
+        state.tabArr = state.tabArr.filter(item => !(item.name == modelName.split('?')[0] && item.id == modelName.split('?')[1]))
+      } else {
+        state.tabArr = state.tabArr.filter(item => item.name != modelName)
+      }
     },
     // 修改tab页的活跃页索引
     modifyTabName(state, name){

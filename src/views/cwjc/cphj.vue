@@ -227,7 +227,7 @@
         :border="true"
         :row-style="{height:'20px'}"
         :cell-style="{padding:'0px'}"
-        :span-method="arraySpanMethod"
+        :span-method="arraySpanMethod1"
       >
         <el-table-column type="index" label="序号" align="center"></el-table-column>
         <el-table-column label="成本要素" align="center">
@@ -435,7 +435,7 @@ export default {
       this.currentPage = currentPage;
       this.loadMainInfo();
     },
-    arraySpanMethod({ row, column, rowIndex, columnIndex }) {
+    arraySpanHandle({ row, column, rowIndex, columnIndex }, data) {
       if (rowIndex == this.sumIndex - 1) {
         if (columnIndex == 1) {
           return [1, 8];
@@ -463,6 +463,56 @@ export default {
           return [1, 1];
         }
       }
+      if (columnIndex === 1) {
+        const _row = this.flitterData(data, "totalName")[
+          rowIndex
+        ];
+        const _col = _row > 0 ? 1 : 0;
+        return {
+          rowspan: _row,
+          colspan: _col
+        };
+      }
+      if (columnIndex === 2) {
+        const _row = this.flitterData(data, "partName")[rowIndex];
+        const _col = _row > 0 ? 1 : 0;
+        return {
+          rowspan: _row,
+          colspan: _col
+        };
+      }
+    },
+    arraySpanMethod1({ row, column, rowIndex, columnIndex }) {
+      return this.arraySpanHandle(
+        { row, column, rowIndex, columnIndex },
+        this.seedetailData
+      );
+    },
+    arraySpanMethod({ row, column, rowIndex, columnIndex }) {
+      return this.arraySpanHandle(
+        { row, column, rowIndex, columnIndex },
+        this.detailData
+      );
+    },
+    flitterData(arr, key1) {
+      let spanOneArr = [];
+      let concatOne = 0;
+      arr.forEach((item, index) => {
+        if (index === 0) {
+          spanOneArr.push(1);
+        } else {
+          //name 修改
+          if (item[key1] === arr[index - 1][key1]) {
+            //第一列需合并相同内容的判断条件
+            spanOneArr[concatOne] += 1;
+            spanOneArr.push(0);
+          } else {
+            spanOneArr.push(1);
+            concatOne = index;
+          }
+        }
+      });
+      return spanOneArr;
     },
     searchList() {
       this.currentPage = 1;
@@ -501,6 +551,7 @@ export default {
           } else {
             this.detailVisible = true;
             this.detailData = res.data;
+            console.log(this.detailData);
             this.colIndex = res.count;
             this.sumIndex = this.detailData.length;
           }

@@ -171,7 +171,7 @@ export default {
               title: "1.5.3成本核算",
               name: "cbhs",
               icon: "el-icon-document"
-            },
+            }
           ]
         },
         {
@@ -181,7 +181,7 @@ export default {
               title: "1.6.1月度生产单耗环比分析",
               name: "ydscd",
               icon: "el-icon-document"
-            },
+            }
           ]
         }
       ],

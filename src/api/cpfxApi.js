@@ -12,27 +12,6 @@ import api from "@/utils/http"
 // }
 
 
-
-
-
-
-
-
-// //  1.2.2辅料投入数据
-// export const getOneBaseDangAn = (params) => {
-//     return api({
-//         url: "/api/dangAn/getOneBaseDangAn",
-//         method: "get",
-//         params
-//     })
-// }
-
-
-
-
-
-
-
 // //  1.2.3能耗投入数据
 // export const addBaseDangAn = (data) => {
 //     return api({
