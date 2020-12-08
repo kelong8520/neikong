@@ -3,16 +3,13 @@
     <div style="borderBottom: 1px solid #ccc;">
       <el-form :inline="true" class="demo-form-inline" ref="ruleForm" :model="ruleForm">
         <el-form-item label="入仓时间">
-          <el-date-picker value-format="yyyy-MM" v-model="ruleForm.val" type="month"></el-date-picker>
+          <el-date-picker value-format="yyyy-MM-dd" v-model="ruleForm.rkrq" type="date"></el-date-picker>
         </el-form-item>
         <el-form-item label="布编">
-          <el-input v-model="ruleForm.a"></el-input>
-        </el-form-item>
-        <el-form-item label="品种">
-          <el-input v-model="ruleForm.a"></el-input>
+          <el-input v-model="ruleForm.textileNo"></el-input>
         </el-form-item>
         <el-form-item label="缸号">
-          <el-input v-model="ruleForm.a"></el-input>
+          <el-input v-model="ruleForm.batchNo"></el-input>
         </el-form-item>
         <el-form-item label="经纱">
           <el-input v-model="ruleForm.a"></el-input>
@@ -43,40 +40,92 @@
           <span v-else>{{scope.$index}}</span>
         </template>
       </el-table-column>
-      <el-table-column prop="id" label="品种" align="center"></el-table-column>
-      <el-table-column prop="gh" label="缸号" align="center"></el-table-column>
-      <el-table-column prop="ys" label="成品入仓时间" align="center"></el-table-column>
-      <el-table-column prop="ys" label="成品长度(y)" align="center"></el-table-column>
+      <el-table-column prop="textileNo" label="品种" align="center" width="120"></el-table-column>
+      <el-table-column prop="batchNo" label="缸号" align="center" width="120"></el-table-column>
+      <el-table-column prop="rkrq" label="成品入仓时间" align="center" width="120"></el-table-column>
+      <el-table-column prop="length1" label="成品长度(y)" align="center" width="120"></el-table-column>
       <el-table-column label="投入经纱" align="center">
-        <el-table-column prop="zjcd" label="经纱名" align="center"></el-table-column>
-        <el-table-column prop="zjcd" label="长度(m)" align="center"></el-table-column>
-        <el-table-column prop="zjcd" label="重量(Kg)" align="center"></el-table-column>
+        <el-table-column label="经纱名" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.warpName"></div>
+          </template>
+        </el-table-column>
+        <el-table-column label="长度(m)" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.realChuZhouLength"></div>
+          </template>
+        </el-table-column>
+        <el-table-column label="重量(Kg)" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.realTouRuShaLiang"></div>
+          </template>
+        </el-table-column>
       </el-table-column>
-      <el-table-column prop="zjcd" label="出轴长度(m)" align="center"></el-table-column>
+      <el-table-column label="出轴长度(m)" align="center" width="120">
+        <template slot-scope="scope">
+          <div v-html="scope.row.realChuZhouLength"></div>
+        </template>
+      </el-table-column>
       <el-table-column label="投入纬纱" align="center">
-        <el-table-column prop="csxm" label="纬纱名" align="center"></el-table-column>
-        <el-table-column prop="csxm" label="重量(Kg)" align="center"></el-table-column>
+        <el-table-column label="纬纱名" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.weftName"></div>
+          </template>
+        </el-table-column>
+        <el-table-column label="重量(Kg)" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.touRuShaLiang"></div>
+          </template>
+        </el-table-column>
       </el-table-column>
-      <el-table-column prop="csxm" label="坯布长度(m)" align="center"></el-table-column>
+      <el-table-column label="坯布长度(m)" align="center" width="120">
+        <template slot-scope="scope">
+          <div v-html="scope.row.piJianLength"></div>
+        </template>
+      </el-table-column>
       <el-table-column label="织成率" align="center">
-        <el-table-column prop="csxm" label="标准(%)" align="center"></el-table-column>
-        <el-table-column prop="csxm" label="实绩(%)" align="center"></el-table-column>
-        <el-table-column prop="csxm" label="偏差(%)" align="center"></el-table-column>
+        <el-table-column prop="gyZhiBuZhiChengLv" label="标准(%)" align="center" width="120"></el-table-column>
+        <el-table-column prop="zhiBuZhiChengLv" label="实绩(%)" align="center" width="120"></el-table-column>
+        <el-table-column prop="zhiZaoPianCha" label="偏差(%)" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="制成率" align="center">
-        <el-table-column prop="gybzz" label="标准(%)" align="center"></el-table-column>
-        <el-table-column prop="gybzz" label="实绩(%)" align="center"></el-table-column>
-        <el-table-column prop="gybzz" label="偏差(%)" align="center"></el-table-column>
+        <el-table-column prop="gyHouZhengZhiChengLv" label="标准(%)" align="center" width="120"></el-table-column>
+        <el-table-column prop="houZhengZhiChengLv" label="实绩(%)" align="center" width="120"></el-table-column>
+        <el-table-column prop="houZhengPianCha" label="偏差(%)" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="经纱百码用量" align="center">
-        <el-table-column prop="xmmx" label="标准(Kg)" align="center"></el-table-column>
-        <el-table-column prop="xmmx" label="实绩(Kg)" align="center"></el-table-column>
-        <el-table-column prop="xmmx" label="偏差(%)" align="center"></el-table-column>
+        <el-table-column label="标准(Kg)" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.baiMaYongJing"></div>
+          </template>
+        </el-table-column>
+        <el-table-column label="实绩(Kg)" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.baiMaShiJiYongJing"></div>
+          </template>
+        </el-table-column>
+        <el-table-column label="偏差(%)" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.baiMaYongJingPianCha"></div>
+          </template>
+        </el-table-column>
       </el-table-column>
       <el-table-column label="纬纱百码用量" align="center">
-        <el-table-column prop="xmmx" label="标准(Kg)" align="center"></el-table-column>
-        <el-table-column prop="xmmx" label="实绩(Kg)" align="center"></el-table-column>
-        <el-table-column prop="xmmx" label="偏差(%)" align="center"></el-table-column>
+        <el-table-column label="标准(Kg)" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.biaoZhunBaiMaYongWei"></div>
+          </template>
+        </el-table-column>
+        <el-table-column label="实绩(Kg)" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.shiCeBaiMaYongWei"></div>
+          </template>
+        </el-table-column>
+        <el-table-column label="偏差(%)" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.baiMaYongWeiPianCha"></div>
+          </template>
+        </el-table-column>
       </el-table-column>
     </el-table>
     <el-pagination
@@ -129,27 +178,37 @@ export default {
       this.$refs.table.bodyWrapper.scrollTop = 0;
       this.currentPage = currentPage;
     },
-    searchClick() {},
-    loadInfo() {}
+    searchClick() {
+      this.currentPage = 1;
+      this.loadInfo();
+    },
+    loadInfo() {
+      this.loading = true;
+      this.$set(this.ruleForm, "pageIndex", this.currentPage);
+      this.$set(this.ruleForm, "pageSize", this.pageSize);
+      let _data = this.ruleForm;
+      cpfxApi
+        .getYLInputData(querystring.stringify(_data))
+        .then(res => {
+          this.baseTableData = res.data;
+          this.total = res.count;
+          this.loading = false;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   },
   mounted() {
     window.onresize = () => {
       this.screenHeight = document.body.clientHeight;
       this.tableHeight = this.screenHeight - 200;
     };
-    var date = new Date();
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-    var time = year + "-" + month + "-" + day;
-    this.$set(this.ruleForm, "choiceDate", time);
     this.loadInfo();
   }
 };
 </script>
 
 <style scoped>
-.el-form--inline .el-form-item {
-  margin-right: 5px;
-}
+@import "./../../assets/css/common.css";
 </style>

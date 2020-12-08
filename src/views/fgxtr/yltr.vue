@@ -3,16 +3,16 @@
     <div style="borderBottom: 1px solid #ccc;">
       <el-form :inline="true" class="demo-form-inline" ref="ruleForm" :model="ruleForm">
         <el-form-item label="生产单号">
-          <el-input v-model="ruleForm.val"></el-input>
+          <el-input v-model="ruleForm.productionNo"></el-input>
         </el-form-item>
         <el-form-item label="色号">
-          <el-input v-model="ruleForm.val"></el-input>
+          <el-input v-model="ruleForm.colorNo"></el-input>
         </el-form-item>
         <el-form-item label="布编">
-          <el-input v-model="ruleForm.val"></el-input>
+          <el-input v-model="ruleForm.textileNo"></el-input>
         </el-form-item>
         <el-form-item label="缸号">
-          <el-input v-model="ruleForm.val"></el-input>
+          <el-input v-model="ruleForm.batchNo"></el-input>
         </el-form-item>
         <el-form-item label="经纱">
           <el-input v-model="ruleForm.val"></el-input>
@@ -20,11 +20,11 @@
         <el-form-item label="纬纱">
           <el-input v-model="ruleForm.val"></el-input>
         </el-form-item>
-        <el-form-item label="出纱时间">
+        <!-- <el-form-item label="出纱时间">
           <el-date-picker v-model="ruleForm.val" type="date"></el-date-picker>
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item label="入仓时间">
-          <el-date-picker v-model="ruleForm.val" type="date"></el-date-picker>
+          <el-date-picker value-format="yyyy-MM-dd" v-model="ruleForm.rkrq" type="date"></el-date-picker>
         </el-form-item>
         <el-form-item>
           <el-button
@@ -54,60 +54,109 @@
             <span v-else>{{scope.$index}}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="id" label="生产单号" align="center"></el-table-column>
-        <el-table-column prop="gh" label="布编" align="center"></el-table-column>
-        <el-table-column prop="ys" label="色号" align="center"></el-table-column>
-        <el-table-column prop="ys" label="缸号" align="center"></el-table-column>
+        <el-table-column prop="productionNo" label="生产单号" align="center" width="120"></el-table-column>
+        <el-table-column prop="textileNo" label="布编" align="center" width="120"></el-table-column>
+        <el-table-column prop="colorNo" label="色号" align="center" width="120"></el-table-column>
+        <el-table-column prop="batchNo" label="缸号" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="浆染原料投入产出信息" align="center">
-        <el-table-column prop="ys" label="经纱" align="center"></el-table-column>
+        <el-table-column label="经纱" align="center" width="120">
+          <template slot-scope="scope">
+              <div v-html="scope.row.warpName"></div>
+            </template>
+        </el-table-column>
         <el-table-column label="经纱投入" align="center">
-          <el-table-column label="出库时间" align="center">
+          <el-table-column label="出库时间" align="center" width="120">
             <template slot-scope="scope">
               <a
                 :href="'http://www.baidu.com?' + scope.row.id"
                 target="_blank"
                 style="color:blue;"
-              >{{scope.row.zjcd}}</a>
+                v-html="scope.row.chuKuDate"
+              ></a>
             </template>
           </el-table-column>
-          <el-table-column prop="zjcd" label="整经长度(m)" align="center"></el-table-column>
-          <el-table-column prop="zjcd" label="投入纱量(Kg)" align="center"></el-table-column>
+          <el-table-column label="整经长度(m)" align="center" width="120">
+            <template slot-scope="scope">
+              <div v-html="scope.row.zhengJingLength"></div>
+            </template>
+          </el-table-column>
+          <el-table-column label="投入纱量(Kg)" align="center" width="120">
+            <template slot-scope="scope">
+              <div v-html="scope.row.realTouRuShaLiang"></div>
+            </template>
+          </el-table-column>
         </el-table-column>
         <el-table-column label="经纱产出" align="center">
-          <el-table-column prop="zjcd" label="出轴时间" align="center"></el-table-column>
-          <el-table-column prop="zjcd" label="出轴长度(m)" align="center"></el-table-column>
-          <el-table-column prop="csxm" label="折合重量(Kg)" align="center"></el-table-column>
+          <el-table-column label="出轴时间" align="center" width="120">
+            <template slot-scope="scope">
+              <div v-html="scope.row.chuZhouDatetime"></div>
+            </template>
+          </el-table-column>
+          <el-table-column label="出轴长度(m)" align="center" width="120">
+            <template slot-scope="scope">
+              <div v-html="scope.row.realChuZhouLength"></div>
+            </template>
+          </el-table-column>
+          <el-table-column label="折合重量(Kg)" align="center" width="120">
+            <template slot-scope="scope">
+              <div v-html="scope.row.zheHeZhongLiang"></div>
+            </template>
+          </el-table-column>
         </el-table-column>
       </el-table-column>
       <el-table-column label="织造原料投入产出信息" align="center">
         <el-table-column label="发坯时间" align="center">
           <template slot-scope="scope">
-            <a
-              :href="'http://www.baidu.com?' + scope.row.id"
-              target="_blank"
-              style="color:blue;"
-            >{{scope.row.csxm}}</a>
+            <a :href="'http://www.baidu.com?' + scope.row.id" target="_blank" style="color:blue;"></a>
           </template>
         </el-table-column>
-        <el-table-column prop="csxm" label="纬纱" align="center"></el-table-column>
-        <el-table-column prop="csxm" label="纬纱投入(Kg)" align="center"></el-table-column>
-        <el-table-column prop="xmmx" label="坯布长度(m)" align="center"></el-table-column>
-        <el-table-column prop="xmmx" label="百米用纱(Kg)" align="center"></el-table-column>
-        <el-table-column prop="xmmx" label="实际织成率" align="center"></el-table-column>
+        <el-table-column label="纬纱" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.weftName"></div>
+          </template>
+        </el-table-column>
+        <el-table-column label="纬纱投入(Kg)" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.chuKuWeight"></div>
+          </template>
+        </el-table-column>
+        <el-table-column label="坯布长度(m)" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.piJianLength"></div>
+          </template>
+        </el-table-column>
+        <el-table-column label="百米用纱(Kg)" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.shiCeBaiMiYongWei"></div>
+          </template>
+        </el-table-column>
+        <el-table-column label="实际织成率" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.shiJiZhiChengLv"></div>
+          </template>
+        </el-table-column>
       </el-table-column>
       <el-table-column label="后整投入产出信息" align="center">
-        <el-table-column prop="gybzz" label="入仓时间" align="center">
+        <el-table-column label="入仓时间" align="center">
           <template slot-scope="scope">
             <a
               :href="'http://www.baidu.com?' + scope.row.id"
               target="_blank"
               style="color:blue;"
-            >{{scope.row.zjcd}}</a>
+            >{{scope.row.rkrq}}</a>
           </template>
         </el-table-column>
-        <el-table-column prop="gybzz" label="成品总长(y)" align="center"></el-table-column>
-        <el-table-column prop="gybzz" label="实际制成率" align="center"></el-table-column>
+        <el-table-column label="成品总长(y)" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.length1"></div>
+          </template>
+        </el-table-column>
+        <el-table-column label="实际制成率" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.shiJiZhiChengLvHZ"></div>
+          </template>
+        </el-table-column>
       </el-table-column>
     </el-table>
     <el-pagination
@@ -136,11 +185,21 @@ export default {
       tableHeight: window.innerHeight - 270, //table高度
       baseTableData: [
         {
+          id: "合计",
+          gh: "合计",
+          ys: "合计",
+          zjcd: "合计",
+          csxm: "合计",
+          xmmx: "合计",
+          gybzz: "合计",
+          state: "合计"
+        },
+        {
           id: "原料",
           gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "合计",
+          ys: "red1",
+          zjcd: "123451",
+          csxm: "2",
           xmmx: "出轴  kg/百米用量",
           gybzz: "出轴  kg/百米用量",
           state: "0"
@@ -148,149 +207,29 @@ export default {
         {
           id: "原料",
           gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
+          ys: "red1",
+          zjcd: "123451",
           csxm: "1",
           xmmx: "出轴  kg/百米用量",
           gybzz: "出轴  kg/百米用量",
           state: "0"
         },
         {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
+          id: "原料1",
+          gh: "经纱2",
+          ys: "red11",
+          zjcd: "1234512",
           csxm: "2",
           xmmx: "出轴  kg/百米用量",
           gybzz: "出轴  kg/百米用量",
           state: "1"
         },
         {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
+          id: "原料1",
+          gh: "经纱2",
+          ys: "red11",
+          zjcd: "123451",
           csxm: "3",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "4",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "5",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "6",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "7",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "8",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "9",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
           xmmx: "出轴  kg/百米用量",
           gybzz: "出轴  kg/百米用量",
           state: "0"
@@ -323,20 +262,26 @@ export default {
       this.$refs.table.bodyWrapper.scrollTop = 0;
       this.currentPage = currentPage;
     },
-    searchList() {},
+    searchList() {
+      this.currentPage = 1;
+      this.loadInfo();
+    },
     // 加载默认页面
     loadInfo() {
-      // this.loading = true;
-      // let _data = this.ruleForm;
-      // fgxtrApi
-      //   .getHouZhengShaiXuan(_data)
-      //   .then(res => {
-      //     this.baseTableData = res.data;
-      //     this.loading = false;
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
+      this.loading = true;
+      this.$set(this.ruleForm, "pageIndex", this.currentPage);
+      this.$set(this.ruleForm, "pageSize", this.pageSize);
+      let _data = this.ruleForm;
+      fgxtrApi
+        .getYLInputData(querystring.stringify(_data))
+        .then(res => {
+          this.baseTableData = res.data;
+          this.total = res.count;
+          this.loading = false;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   mounted() {
@@ -344,12 +289,6 @@ export default {
       this.screenHeight = document.body.clientHeight;
       this.tableHeight = this.screenHeight - 200;
     };
-    var date = new Date();
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-    var time = year + "-" + month + "-" + day;
-    this.$set(this.ruleForm, "choiceDate", time);
     this.loadInfo();
   }
 };

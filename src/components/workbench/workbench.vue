@@ -66,6 +66,7 @@ export default {
       this.editableTabs.forEach((item, i) => {
         if (i > 1) {
           this.editableTabs.splice(1);
+          this.$router.push("index")
         }
       });
     },

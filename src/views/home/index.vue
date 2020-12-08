@@ -1,7 +1,7 @@
 <template>
   <div class="down11">
     <el-container class="allHeight">
-      <el-aside width="250px" v-show="accord" style="background-color: #0A1420;">
+      <el-aside width="270px" v-show="accord" style="background-color: #0A1420;">
         <el-menu class="el-menu-vertical-demo">
           <el-submenu :index="String(item)" v-for="(work,item) in sixList" :key="item">
             <template slot="title">
@@ -157,16 +157,16 @@ export default {
         {
           title: "1.5 实际生产成本核算",
           model: [
-            {
-              title: "1.5.1月度机物料费用",
-              name: "jwlfy",
-              icon: "el-icon-document"
-            },
-            {
-              title: "1.5.2月度人工费用",
-              name: "rgfy",
-              icon: "el-icon-document"
-            },
+            // {
+            //   title: "1.5.1月度机物料费用",
+            //   name: "jwlfy",
+            //   icon: "el-icon-document"
+            // },
+            // {
+            //   title: "1.5.2月度人工费用",
+            //   name: "rgfy",
+            //   icon: "el-icon-document"
+            // },
             {
               title: "1.5.3成本核算",
               name: "cbhs",

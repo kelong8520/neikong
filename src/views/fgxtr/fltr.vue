@@ -47,13 +47,13 @@
             <span v-else>{{scope.$index}}</span>
           </template> -->
         </el-table-column>
-        <el-table-column prop="productionNos" label="生产单号" align="center"></el-table-column>
-        <el-table-column prop="textileNos" label="布编" align="center"></el-table-column>
-        <el-table-column prop="colorNo" label="色号" align="center"></el-table-column>
+        <el-table-column prop="productionNos" label="生产单号" align="center" width="120"></el-table-column>
+        <el-table-column prop="textileNos" label="布编" align="center" width="120"></el-table-column>
+        <el-table-column prop="colorNo" label="色号" align="center" width="120"></el-table-column>
         <el-table-column prop="batchNo" label="缸号" align="center"></el-table-column>
       </el-table-column>
       <el-table-column label="染色辅料用量" align="center">
-        <el-table-column label="染色日期" align="center">
+        <el-table-column label="染色日期" align="center" width="120">
           <template slot-scope="scope">
             <a
               :href="'http://www.baidu.com?' + scope.row.id"
@@ -62,15 +62,15 @@
             >{{scope.row.ranSeDatetime}}</a>
           </template>
         </el-table-column>
-        <el-table-column prop="zhengJingLengthRS" label="投入长度(m)" align="center"></el-table-column>
-        <el-table-column prop="wanMiDianLanReal" label="靛蓝(Kg)" align="center"></el-table-column>
-        <el-table-column prop="wanMiShaoJianReal" label="烧碱(Kg)" align="center"></el-table-column>
-        <el-table-column prop="wanMiBaoXianFenReal" label="保险粉(Kg)" align="center"></el-table-column>
-        <el-table-column prop="wanMiShenTouJiReal" label="渗透剂(Kg)" align="center"></el-table-column>
-        <el-table-column prop="wanMiKuoSanJiReal" label="扩散剂(Kg)" align="center"></el-table-column>
+        <el-table-column prop="zhengJingLengthRS" label="投入长度(m)" align="center" width="120"></el-table-column>
+        <el-table-column prop="wanMiDianLanReal" label="靛蓝(Kg)" align="center" width="120"></el-table-column>
+        <el-table-column prop="wanMiShaoJianReal" label="烧碱(Kg)" align="center" width="120"></el-table-column>
+        <el-table-column prop="wanMiBaoXianFenReal" label="保险粉(Kg)" align="center" width="120"></el-table-column>
+        <el-table-column prop="wanMiShenTouJiReal" label="渗透剂(Kg)" align="center" width="120"></el-table-column>
+        <el-table-column prop="wanMiKuoSanJiReal" label="扩散剂(Kg)" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="上浆辅料用量" align="center">
-        <el-table-column label="上浆日期" align="center">
+        <el-table-column label="上浆日期" align="center" width="120">
           <template slot-scope="scope">
             <a
               :href="'http://www.baidu.com?' + scope.row.id"
@@ -79,13 +79,13 @@
             >{{scope.row.shangJiangDatetime}}</a>
           </template>
         </el-table-column>
-        <el-table-column prop="zhengJingLength" label="投入长度(m)" align="center"></el-table-column>
-        <el-table-column prop="realGndfStandardKg" label="高粘淀粉(Kg)" align="center"></el-table-column>
-        <el-table-column prop="realDndfStandardKg" label="低粘淀粉(Kg)" align="center"></el-table-column>
-        <el-table-column prop="realSsjlStandardKg" label="SS浆料(Kg)" align="center"></el-table-column>
+        <el-table-column prop="zhengJingLength" label="投入长度(m)" align="center" width="120"></el-table-column>
+        <el-table-column prop="realGndfStandardKg" label="高粘淀粉(Kg)" align="center" width="120"></el-table-column>
+        <el-table-column prop="realDndfStandardKg" label="低粘淀粉(Kg)" align="center" width="120"></el-table-column>
+        <el-table-column prop="realSsjlStandardKg" label="SS浆料(Kg)" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="后整理辅料用量" align="center">
-        <el-table-column label="后整理日期" align="center">
+        <el-table-column label="后整理日期" align="center" width="120">
           <template slot-scope="scope">
             <a
               :href="'http://www.baidu.com?' + scope.row.id"
@@ -94,13 +94,13 @@
             >{{scope.row.houZhengDate}}</a>
           </template>
         </el-table-column>
-        <el-table-column prop="touPiLength" label="投入长度(m)" align="center"></el-table-column>
-        <el-table-column prop="tuiJiangShaoJianRealKg" label="退浆烧碱(Kg)" align="center"></el-table-column>
-        <el-table-column prop="siGuangShaoJianRealKg" label="丝光烧碱(Kg)" align="center"></el-table-column>
-        <el-table-column prop="tuiJiangTuiJiangJi1RealKg" label="退浆剂①(Kg)" align="center"></el-table-column>
-        <el-table-column prop="tuiJiangTuiJiangJi2RealKg" label="退浆剂②(Kg)" align="center"></el-table-column>
-        <el-table-column prop="tuiJiangNingMengSuanRealKg" label="退浆柠檬酸(Kg)" align="center"></el-table-column>
-        <el-table-column prop="siGuangNingMengSuanRealKg" label="丝光柠檬酸(Kg)" align="center"></el-table-column>
+        <el-table-column prop="touPiLength" label="投入长度(m)" align="center" width="120"></el-table-column>
+        <el-table-column prop="tuiJiangShaoJianRealKg" label="退浆烧碱(Kg)" align="center" width="120"></el-table-column>
+        <el-table-column prop="siGuangShaoJianRealKg" label="丝光烧碱(Kg)" align="center" width="120"></el-table-column>
+        <el-table-column prop="tuiJiangTuiJiangJi1RealKg" label="退浆剂①(Kg)" align="center" width="120"></el-table-column>
+        <el-table-column prop="tuiJiangTuiJiangJi2RealKg" label="退浆剂②(Kg)" align="center" width="120"></el-table-column>
+        <el-table-column prop="tuiJiangNingMengSuanRealKg" label="退浆柠檬酸(Kg)" align="center" width="120"></el-table-column>
+        <el-table-column prop="siGuangNingMengSuanRealKg" label="丝光柠檬酸(Kg)" align="center" width="120"></el-table-column>
       </el-table-column>
     </el-table>
     <el-pagination
@@ -336,7 +336,10 @@ export default {
       this.$refs.table.bodyWrapper.scrollTop = 0;
       this.currentPage = currentPage;
     },
-    searchList() {},
+    searchList() {
+      this.currentPage = 1;
+      this.loadInfo();
+    },
     // 加载默认页面
     loadInfo() {
       this.loading = true;
@@ -347,6 +350,7 @@ export default {
         .getFLInputData(querystring.stringify(_data))
         .then(res => {
           this.baseTableData = res.data;
+          this.total = res.count;
           this.loading = false;
         })
         .catch(err => {

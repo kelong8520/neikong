@@ -3,16 +3,16 @@
     <div style="borderBottom: 1px solid #ccc;">
       <el-form :inline="true" class="demo-form-inline" ref="ruleForm" :model="ruleForm">
         <el-form-item label="色号">
-          <el-input v-model="ruleForm.a"></el-input>
+          <el-input v-model="ruleForm.colorNo"></el-input>
         </el-form-item>
         <el-form-item label="布编">
-          <el-input v-model="ruleForm.a"></el-input>
+          <el-input v-model="ruleForm.textileNo"></el-input>
         </el-form-item>
         <el-form-item label="缸号">
-          <el-input v-model="ruleForm.a"></el-input>
+          <el-input v-model="ruleForm.batchNo"></el-input>
         </el-form-item>
         <el-form-item label="成品入仓时间">
-          <el-date-picker v-model="ruleForm.val" type="date"></el-date-picker>
+          <el-date-picker v-model="ruleForm.chengPinRuCangDate" type="date"></el-date-picker>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click.native="searchClick" class="button1">检索</el-button>
@@ -38,46 +38,54 @@
             <span v-else>{{scope.$index}}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="id" label="布编" align="center"></el-table-column>
-        <el-table-column prop="gh" label="色号" align="center"></el-table-column>
-        <el-table-column prop="ys" label="缸号" align="center"></el-table-column>
-        <el-table-column prop="ys" label="成品入仓时间" align="center"></el-table-column>
-        <el-table-column prop="ys" label="成品入仓数量" align="center"></el-table-column>
+        <el-table-column label="布编" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.textileNos"></div>
+          </template>
+        </el-table-column>
+        <el-table-column label="色号" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.colorNo"></div>
+          </template>
+        </el-table-column>
+        <el-table-column prop="batchNo" label="缸号" align="center" width="120"></el-table-column>
+        <el-table-column prop="chengPinRuCangDate" label="成品入仓时间" align="center" width="120"></el-table-column>
+        <el-table-column prop="chengPinLength" label="成品入仓数量" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="染色万码能耗用量" align="center">
         <el-table-column label="自来水" align="center">
-          <el-table-column prop="zjcd" label="标准(吨)" align="center"></el-table-column>
-          <el-table-column prop="zjcd" label="实绩(吨)" align="center"></el-table-column>
-          <el-table-column prop="zjcd" label="偏差(%)" align="center"></el-table-column>
+          <el-table-column prop="standardWater" label="标准(吨)" align="center" width="120"></el-table-column>
+          <el-table-column prop="realWanMiWater" label="实绩(吨)" align="center" width="120"></el-table-column>
+          <el-table-column prop="waterOffset" label="偏差(%)" align="center" width="120"></el-table-column>
         </el-table-column>
         <el-table-column label="蒸汽" align="center">
-          <el-table-column prop="zjcd" label="标准(吨)" align="center"></el-table-column>
-          <el-table-column prop="zjcd" label="实绩(吨)" align="center"></el-table-column>
-          <el-table-column prop="zjcd" label="偏差(%)" align="center"></el-table-column>
+          <el-table-column prop="standardSteam" label="标准(吨)" align="center" width="120"></el-table-column>
+          <el-table-column prop="realWanMiSteam" label="实绩(吨)" align="center" width="120"></el-table-column>
+          <el-table-column prop="steamOffset" label="偏差(%)" align="center" width="120"></el-table-column>
         </el-table-column>
       </el-table-column>
       <el-table-column label="上浆万码能耗用量" align="center">
         <el-table-column label="蒸汽" align="center">
-          <el-table-column prop="csxm" label="标准(吨)" align="center"></el-table-column>
-          <el-table-column prop="csxm" label="实绩(吨)" align="center"></el-table-column>
-          <el-table-column prop="csxm" label="偏差(%)" align="center"></el-table-column>
+          <el-table-column prop="jsStandardSteam" label="标准(吨)" align="center" width="120"></el-table-column>
+          <el-table-column prop="realWanMiSteam2" label="实绩(吨)" align="center" width="120"></el-table-column>
+          <el-table-column prop="steamOffset2" label="偏差(%)" align="center" width="120"></el-table-column>
         </el-table-column>
       </el-table-column>
       <el-table-column label="后整理万码能耗用量" align="center">
         <el-table-column label="自来水" align="center">
-          <el-table-column prop="xmmx" label="标准(吨)" align="center"></el-table-column>
-          <el-table-column prop="xmmx" label="实绩(吨)" align="center"></el-table-column>
-          <el-table-column prop="xmmx" label="偏差(%)" align="center"></el-table-column>
+          <el-table-column prop="totalWater" label="标准(吨)" align="center" width="120"></el-table-column>
+          <el-table-column prop="realtotalWater" label="实绩(吨)" align="center" width="120"></el-table-column>
+          <el-table-column prop="totalWaterOffset" label="偏差(%)" align="center" width="120"></el-table-column>
         </el-table-column>
         <el-table-column label="蒸汽" align="center">
-          <el-table-column prop="xmmx" label="标准(吨)" align="center"></el-table-column>
-          <el-table-column prop="xmmx" label="实绩(吨)" align="center"></el-table-column>
-          <el-table-column prop="xmmx" label="偏差(%)" align="center"></el-table-column>
+          <el-table-column prop="totalSteam" label="标准(吨)" align="center" width="120"></el-table-column>
+          <el-table-column prop="realtotalSteam" label="实绩(吨)" align="center" width="120"></el-table-column>
+          <el-table-column prop="totalSteamOffset" label="偏差(%)" align="center" width="120"></el-table-column>
         </el-table-column>
         <el-table-column label="天然气" align="center">
-          <el-table-column prop="gybzz" label="标准(m³)" align="center"></el-table-column>
-          <el-table-column prop="gybzz" label="实绩(m³)" align="center"></el-table-column>
-          <el-table-column prop="gybzz" label="偏差(%)" align="center"></el-table-column>
+          <el-table-column prop="totalGas" label="标准(m³)" align="center" width="120"></el-table-column>
+          <el-table-column prop="realtotalGas" label="实绩(m³)" align="center" width="120"></el-table-column>
+          <el-table-column prop="totalGasOffset" label="偏差(%)" align="center" width="120"></el-table-column>
         </el-table-column>
       </el-table-column>
     </el-table>
@@ -246,20 +254,26 @@ export default {
       this.$refs.table.bodyWrapper.scrollTop = 0;
       this.currentPage = currentPage;
     },
-    searchList() {},
+    searchList() {
+      this.currentPage = 1;
+      this.loadInfo();
+    },
     // 加载默认页面
     loadInfo() {
-      // this.loading = true;
-      // let _data = this.ruleForm;
-      // bzpApi
-      //   .cpfxApi(_data)
-      //   .then(res => {
-      //     this.baseTableData = res.data;
-      //     this.loading = false;
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
+      this.loading = true;
+      this.$set(this.ruleForm, "pageIndex", this.currentPage);
+      this.$set(this.ruleForm, "pageSize", this.pageSize);
+      let _data = this.ruleForm;
+      cpfxApi
+        .getNHInputData(querystring.stringify(_data))
+        .then(res => {
+          this.baseTableData = res.data;
+          this.total = res.count;
+          this.loading = false;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   mounted() {
@@ -267,12 +281,12 @@ export default {
       this.screenHeight = document.body.clientHeight;
       this.tableHeight = this.screenHeight - 200;
     };
-    var date = new Date();
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-    var time = year + "-" + month + "-" + day;
-    this.$set(this.ruleForm, "choiceDate", time);
+    // var date = new Date();
+    // var year = date.getFullYear();
+    // var month = date.getMonth() + 1;
+    // var day = date.getDate();
+    // var time = year + "-" + month + "-" + day;
+    // this.$set(this.ruleForm, "choiceDate", time);
     this.loadInfo();
   }
 };
