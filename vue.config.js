@@ -6,6 +6,7 @@ module.exports = {
   // webpack-dev-server 相关配置
   devServer: {
     open: true,
+    // host: "192.168.5.105",
     host: "127.0.0.1",
     port: 8520,
     https: false,

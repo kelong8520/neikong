@@ -183,58 +183,7 @@ export default {
       currentPage: 1, //默认开始页面
       screenHeight: document.body.clientHeight, //屏幕高度
       tableHeight: window.innerHeight - 270, //table高度
-      baseTableData: [
-        {
-          id: "合计",
-          gh: "合计",
-          ys: "合计",
-          zjcd: "合计",
-          csxm: "合计",
-          xmmx: "合计",
-          gybzz: "合计",
-          state: "合计"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red1",
-          zjcd: "123451",
-          csxm: "2",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red1",
-          zjcd: "123451",
-          csxm: "1",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料1",
-          gh: "经纱2",
-          ys: "red11",
-          zjcd: "1234512",
-          csxm: "2",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "1"
-        },
-        {
-          id: "原料1",
-          gh: "经纱2",
-          ys: "red11",
-          zjcd: "123451",
-          csxm: "3",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        }
-      ],
+      baseTableData: [],
       ruleForm: {},
       loading: false
     };
@@ -261,6 +210,7 @@ export default {
     currentChange(currentPage) {
       this.$refs.table.bodyWrapper.scrollTop = 0;
       this.currentPage = currentPage;
+      this.loadInfo();
     },
     searchList() {
       this.currentPage = 1;

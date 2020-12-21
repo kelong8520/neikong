@@ -3,13 +3,13 @@
     <div style="borderBottom: 1px solid #ccc;">
       <el-form :inline="true" class="demo-form-inline" ref="ruleForm" :model="ruleForm">
         <el-form-item label="时间">
-          <el-date-picker v-model="ruleForm.val" type="date"></el-date-picker>
+          <el-date-picker value-format="yyyy-MM" v-model="ruleForm.chengPinRuCangDate" type="month"></el-date-picker>
         </el-form-item>
         <el-form-item label="生产单号">
-          <el-input v-model="ruleForm.val"></el-input>
+          <el-input v-model="ruleForm.productionNo"></el-input>
         </el-form-item>
         <el-form-item label="品种">
-          <el-input v-model="ruleForm.val"></el-input>
+          <el-input v-model="ruleForm.textileNo"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button
@@ -32,85 +32,85 @@
       v-loading="loading"
     >
       <el-table-column type="index" label="序号" align="center"></el-table-column>
-      <el-table-column prop="id" label="生产单号" align="center"></el-table-column>
-      <el-table-column prop="id" label="品种" align="center"></el-table-column>
+      <el-table-column prop="productionNo" label="生产单号" align="center"></el-table-column>
+      <el-table-column prop="textileNo" label="品种" align="center"></el-table-column>
       <el-table-column label="入仓信息" align="center">
-        <el-table-column prop="gh" label="数量" align="center"></el-table-column>
-        <el-table-column prop="gh" label="时间" align="center"></el-table-column>
+        <el-table-column prop="chengPinLength" label="数量" align="center"></el-table-column>
+        <el-table-column prop="chengPinRuCangDate" label="时间" align="center"></el-table-column>
       </el-table-column>
       <el-table-column label="成本核算" align="center">
-        <el-table-column prop="gh" label="标准成本" align="center"></el-table-column>
-        <el-table-column prop="gh" label="实际成本" align="center"></el-table-column>
-        <el-table-column prop="gh" label="标准偏差" align="center"></el-table-column>
+        <el-table-column prop="standardHeSuan" label="标准成本" align="center"></el-table-column>
+        <el-table-column prop="realHeSuan" label="实际成本" align="center"></el-table-column>
+        <el-table-column prop="heSuanPianCha" label="标准偏差" align="center"></el-table-column>
       </el-table-column>
 
       <el-table-column label="生产部门投入" align="center">
         <el-table-column label="浆染生产投入" align="center">
-          <el-table-column prop="ys" label="小计" align="center"></el-table-column>
+          <el-table-column prop="jrscXiaoJi" label="小计" align="center"></el-table-column>
           <el-table-column label="①原料投入价格" align="center">
             <template slot-scope="scope">
-              <div @click="childInterface1(scope.row)" style="color:blue;">{{scope.row.ys}}</div>
+              <div @click="childInterface1(scope.row)" style="color:blue;">{{scope.row.jrylPrice}}</div>
             </template>
           </el-table-column>
           <el-table-column label="②辅料投入价格" align="center">
             <template slot-scope="scope">
-              <div @click="childInterface2(scope.row)" style="color:blue;">{{scope.row.ys}}</div>
+              <div @click="childInterface2(scope.row)" style="color:blue;">{{scope.row.jrflPrice}}</div>
             </template>
           </el-table-column>
           <el-table-column label="③能耗投入价格" align="center">
             <template slot-scope="scope">
-              <div @click="childInterface3(scope.row)" style="color:blue;">{{scope.row.ys}}</div>
+              <div @click="childInterface3(scope.row)" style="color:blue;">{{scope.row.jrnhPrice}}</div>
             </template>
           </el-table-column>
           <el-table-column label="④机物料投入价格" align="center">
             <template slot-scope="scope">
-              <div @click="childInterface7(scope.row)" style="color:blue;">{{scope.row.ys}}</div>
+              <div @click="childInterface7(scope.row)" style="color:blue;">{{scope.row.jrjwlPrice}}</div>
             </template>
           </el-table-column>
           <el-table-column label="⑤人工投入" align="center">
             <template slot-scope="scope">
-              <div @click="childInterface8(scope.row)" style="color:blue;">{{scope.row.ys}}</div>
+              <div @click="childInterface8(scope.row)" style="color:blue;">{{scope.row.jrrgPrice}}</div>
             </template>
           </el-table-column>
         </el-table-column>
         <el-table-column label="织造生产投入" align="center">
-          <el-table-column prop="zjcd" label="小计" align="center"></el-table-column>
+          <el-table-column prop="zzscXiaoJi" label="小计" align="center"></el-table-column>
           <el-table-column label="①原料投入价格" align="center">
             <template slot-scope="scope">
-              <div @click="childInterface4(scope.row)(scope.row)" style="color:blue;">{{scope.row.ys}}</div>
+              <div @click="childInterface4(scope.row)(scope.row)" style="color:blue;">{{scope.row.zzylPrice}}</div>
             </template>
           </el-table-column>
           <el-table-column label="②机物料投入价格" align="center">
             <template slot-scope="scope">
-              <div @click="childInterface7(scope.row)(scope.row)" style="color:blue;">{{scope.row.ys}}</div>
+              <div @click="childInterface7(scope.row)(scope.row)" style="color:blue;">{{scope.row.zzjwlPrice}}</div>
             </template>
           </el-table-column>
           <el-table-column label="③人工投入" align="center">
             <template slot-scope="scope">
-              <div @click="childInterface8(scope.row)(scope.row)" style="color:blue;">{{scope.row.ys}}</div>
+              <div @click="childInterface8(scope.row)(scope.row)" style="color:blue;">{{scope.row.zzrgPrice}}</div>
             </template>
           </el-table-column>
         </el-table-column>
         <el-table-column label="后整生产投入" align="center">
-          <el-table-column prop="csxm" label="小计" align="center"></el-table-column>
+          <el-table-column prop="hzscXiaoJi" label="小计" align="center"></el-table-column>
           <el-table-column label="①辅料投入价格" align="center">
             <template slot-scope="scope">
-              <div @click="childInterface5(scope.row)" style="color:blue;">{{scope.row.ys}}</div>
+              <div @click="childInterface5(scope.row)" style="color:blue;">{{scope.row.hzflPrice}}</div>
             </template>
           </el-table-column>
           <el-table-column label="②能耗投入价格" align="center">
             <template slot-scope="scope">
-              <div @click="childInterface6(scope.row)" style="color:blue;">{{scope.row.ys}}</div>
+              <div @click="childInterface6(scope.row)" style="color:blue;">{{scope.row.hznhPrice}}</div>
             </template>
           </el-table-column>
           <el-table-column label="③机物料投入价格" align="center">
             <template slot-scope="scope">
-              <div @click="childInterface7(scope.row)" style="color:blue;">{{scope.row.ys}}</div>
+              <div @click="childInterface7(scope.row)" style="color:blue;">{{scope.row.hzjwlPrice}}</div>
             </template>
           </el-table-column>
           <el-table-column label="④人工投入" align="center">
             <template slot-scope="scope">
-              <div @click="childInterface8(scope.row)" style="color:blue;">{{scope.row.ys}}</div>
+              <div @click="childInterface8(scope.row)" style="color:blue;">{{scope.row.hzrgPrice}}</div>
             </template>
           </el-table-column>
         </el-table-column>
@@ -119,22 +119,22 @@
       <el-table-column label="生产部门外投入" align="center">
         <el-table-column label="①其他部门机物料投入价格" align="center">
           <template slot-scope="scope">
-            <div @click="childInterface7(scope.row)" style="color:blue;">{{scope.row.ys}}</div>
+            <div @click="childInterface7(scope.row)" style="color:blue;">{{scope.row.otherjwlPrice}}</div>
           </template>
         </el-table-column>
         <el-table-column label="②其他部门人工投入" align="center">
           <template slot-scope="scope">
-            <div @click="childInterface8(scope.row)" style="color:blue;">{{scope.row.ys}}</div>
+            <div @click="childInterface8(scope.row)" style="color:blue;">{{scope.row.otherrgPrice}}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="xmmx" label="③其他部门电费" align="center"></el-table-column>
-        <el-table-column prop="xmmx" label="④其他部门水费" align="center"></el-table-column>
-        <el-table-column prop="xmmx" label="⑤污水投入费用" align="center"></el-table-column>
-        <el-table-column prop="xmmx" label="⑥税金" align="center"></el-table-column>
-        <el-table-column prop="gybzz" label="⑦运费" align="center"></el-table-column>
-        <el-table-column prop="gybzz" label="⑧销售费用" align="center"></el-table-column>
-        <el-table-column prop="gybzz" label="⑨管理费用" align="center"></el-table-column>
-        <el-table-column prop="gybzz" label="⑩财务费用" align="center"></el-table-column>
+        <el-table-column prop="otherDianPrice" label="③其他部门电费" align="center"></el-table-column>
+        <el-table-column prop="otherShuiPrice" label="④其他部门水费" align="center"></el-table-column>
+        <el-table-column prop="wuShuiPrice" label="⑤污水投入费用" align="center"></el-table-column>
+        <el-table-column prop="shuiJinPrice" label="⑥税金" align="center"></el-table-column>
+        <el-table-column prop="yunFeiPrice" label="⑦运费" align="center"></el-table-column>
+        <el-table-column prop="xiaoShouPrice" label="⑧销售费用" align="center"></el-table-column>
+        <el-table-column prop="guanLiPrice" label="⑨管理费用" align="center"></el-table-column>
+        <el-table-column prop="caiWuPrice" label="⑩财务费用" align="center"></el-table-column>
       </el-table-column>
     </el-table>
     <el-pagination
@@ -595,20 +595,26 @@ export default {
       this.$refs.table.bodyWrapper.scrollTop = 0;
       this.currentPage = currentPage;
     },
-    searchList() {},
+    searchList() {
+      this.currentPage = 1;
+      this.loadInfo();
+    },
     // 加载默认页面
     loadInfo() {
-      // this.loading = true;
-      // let _data = this.ruleForm;
-      // fgxtrApi
-      //   .getHouZhengShaiXuan(_data)
-      //   .then(res => {
-      //     this.baseTableData = res.data;
-      //     this.loading = false;
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
+      this.loading = true;
+      this.$set(this.ruleForm, "pageIndex", this.currentPage);
+      this.$set(this.ruleForm, "pageSize", this.pageSize);
+      let _data = this.ruleForm;
+      sccbApi
+        .getcbhsTotal(_data)
+        .then(res => {
+          this.baseTableData = res.data;
+          this.total = res.count;
+          this.loading = false;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   mounted() {
@@ -616,12 +622,6 @@ export default {
       this.screenHeight = document.body.clientHeight;
       this.tableHeight = this.screenHeight - 200;
     };
-    var date = new Date();
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-    var time = year + "-" + month + "-" + day;
-    this.$set(this.ruleForm, "choiceDate", time);
     this.loadInfo();
   }
 };

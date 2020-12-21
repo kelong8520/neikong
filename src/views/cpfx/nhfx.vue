@@ -12,10 +12,10 @@
           <el-input v-model="ruleForm.batchNo"></el-input>
         </el-form-item>
         <el-form-item label="成品入仓时间">
-          <el-date-picker v-model="ruleForm.chengPinRuCangDate" type="date"></el-date-picker>
+          <el-date-picker value-format="yyyy-MM-dd" v-model="ruleForm.chengPinRuCangDate" type="date"></el-date-picker>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click.native="searchClick" class="button1">检索</el-button>
+          <el-button type="primary" @click.native="searchList" class="button1">检索</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -113,118 +113,7 @@ export default {
       currentPage: 1, //默认开始页面
       screenHeight: document.body.clientHeight, //屏幕高度
       tableHeight: window.innerHeight - 200, //table高度
-      baseTableData: [
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "合计",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "1",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "2",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "1"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "3",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "4",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "5",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "6",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "7",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "8",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "9",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        }
-      ],
+      baseTableData: [],
       ruleForm: {},
       loading: false
     };
@@ -253,6 +142,7 @@ export default {
     currentChange(currentPage) {
       this.$refs.table.bodyWrapper.scrollTop = 0;
       this.currentPage = currentPage;
+      this.loadInfo();
     },
     searchList() {
       this.currentPage = 1;
@@ -281,12 +171,6 @@ export default {
       this.screenHeight = document.body.clientHeight;
       this.tableHeight = this.screenHeight - 200;
     };
-    // var date = new Date();
-    // var year = date.getFullYear();
-    // var month = date.getMonth() + 1;
-    // var day = date.getDate();
-    // var time = year + "-" + month + "-" + day;
-    // this.$set(this.ruleForm, "choiceDate", time);
     this.loadInfo();
   }
 };

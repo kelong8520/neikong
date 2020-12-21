@@ -21,7 +21,7 @@
           <el-date-picker v-model="ruleForm.shangJiangDate" type="date"></el-date-picker>
         </el-form-item>
         <el-form-item label="后整理日期">
-          <el-date-picker v-model="ruleForm.houZhengDate" type="date"></el-date-picker>
+          <el-date-picker value-format="yyyy-MM-dd" v-model="ruleForm.houZhengDate" type="date"></el-date-picker>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click.native="searchList" class="button1">检索</el-button>
@@ -155,178 +155,7 @@ export default {
       currentPage: 1, //默认开始页面
       screenHeight: document.body.clientHeight, //屏幕高度
       tableHeight: window.innerHeight - 270, //table高度
-      baseTableData: [
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "合计",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "1",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "2",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "1"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "3",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "4",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "5",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "6",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "7",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "8",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "9",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "原料",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        }
-      ],
+      baseTableData: [],
       ruleForm: {},
       loading: false
     };
@@ -334,9 +163,9 @@ export default {
   methods: {
     arraySpanMethod({ row, column, rowIndex, columnIndex }) {
       if (rowIndex === 0) {
-        if (columnIndex === 1) {
+        if (columnIndex === 2) {
           return [1, 4];
-        } else if (columnIndex == 2) {
+        } else if (columnIndex == 1) {
           return [0, 0];
         } else if (columnIndex == 3) {
           return [0, 0];
@@ -353,8 +182,12 @@ export default {
     currentChange(currentPage) {
       this.$refs.table.bodyWrapper.scrollTop = 0;
       this.currentPage = currentPage;
+      this.loadInfo();
     },
-    searchList() {},
+    searchList() {
+      this.currentPage = 1;
+      this.loadInfo();
+    },
     // 加载默认页面
     loadInfo() {
       this.loading = true;

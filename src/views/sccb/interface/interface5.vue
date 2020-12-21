@@ -12,57 +12,49 @@
       v-loading="loading"
     >
       <el-table-column type="index" label="序号" align="center"></el-table-column>
-      <el-table-column prop="id" label="生产单号" align="center"></el-table-column>
-      <el-table-column prop="id" label="品种" align="center"></el-table-column>
-      <el-table-column prop="id" label="缸号" align="center"></el-table-column>
+      <el-table-column prop="productionNos" label="生产单号" align="center" width="120"></el-table-column>
+      <el-table-column prop="textileNos" label="品种" align="center" width="120"></el-table-column>
+      <el-table-column prop="batchNo" label="缸号" align="center" width="120"></el-table-column>
       <el-table-column label="入仓信息" align="center">
-        <el-table-column prop="gh" label="数量(y)" align="center"></el-table-column>
-        <el-table-column prop="gh" label="时间" align="center"></el-table-column>
+        <el-table-column prop="chengPinLength" label="数量(y)" align="center" width="120"></el-table-column>
+        <el-table-column prop="chengPinRuCangDate" label="时间" align="center" width="120"></el-table-column>
       </el-table-column>
-      <el-table-column prop="gh" label="实际投入价格合计" align="center"></el-table-column>
+      <el-table-column prop="realJiaGeTotal" label="实际投入价格合计" align="center" width="120"></el-table-column>
       <el-table-column label="后整辅料投入" align="center">
         <el-table-column label="烧碱" align="center">
-          <el-table-column prop="ys" label="使用数量" align="center"></el-table-column>
-          <el-table-column prop="ys" label="单价" align="center"></el-table-column>
-          <el-table-column prop="ys" label="总额" align="center"></el-table-column>
-          <el-table-column prop="ys" label="百码投入标准价格" align="center"></el-table-column>
-          <el-table-column prop="ys" label="百码投入实际价格" align="center"></el-table-column>
-          <el-table-column prop="ys" label="标准偏差" align="center"></el-table-column>
+          <el-table-column prop="useQuantitySJ" label="使用数量" align="center" width="120"></el-table-column>
+          <el-table-column prop="danJiaSJ" label="单价" align="center" width="120"></el-table-column>
+          <el-table-column prop="useTotalSJ" label="总额" align="center" width="120"></el-table-column>
+          <el-table-column prop="baiMaBiaoZhunJiaGeSJ" label="百码投入标准价格" align="center" width="120"></el-table-column>
+          <el-table-column prop="baiMaRealJiaGeSJ" label="百码投入实际价格" align="center" width="120"></el-table-column>
+          <el-table-column prop="biaoZhunPianChaSJ" label="标准偏差" align="center" width="120"></el-table-column>
         </el-table-column>
         <el-table-column label="退浆剂①" align="center">
-          <el-table-column prop="ys" label="使用数量" align="center"></el-table-column>
-          <el-table-column prop="ys" label="单价" align="center"></el-table-column>
-          <el-table-column prop="ys" label="总额" align="center"></el-table-column>
-          <el-table-column prop="ys" label="百码投入标准价格" align="center"></el-table-column>
-          <el-table-column prop="ys" label="百码投入实际价格" align="center"></el-table-column>
-          <el-table-column prop="ys" label="标准偏差" align="center"></el-table-column>
+          <el-table-column prop="useQuantityTJJ1" label="使用数量" align="center" width="120"></el-table-column>
+          <el-table-column prop="danJiaTJJ1" label="单价" align="center" width="120"></el-table-column>
+          <el-table-column prop="useTotalTJJ1" label="总额" align="center" width="120"></el-table-column>
+          <el-table-column prop="baiMaBiaoZhunJiaGeTJJ1" label="百码投入标准价格" align="center" width="120"></el-table-column>
+          <el-table-column prop="baiMaRealJiaGeTJJ1" label="百码投入实际价格" align="center" width="120"></el-table-column>
+          <el-table-column prop="biaoZhunPianChaTJJ1" label="标准偏差" align="center" width="120"></el-table-column>
         </el-table-column>
         <el-table-column label="退浆剂②" align="center">
-          <el-table-column prop="ys" label="使用数量" align="center"></el-table-column>
-          <el-table-column prop="ys" label="单价" align="center"></el-table-column>
-          <el-table-column prop="ys" label="总额" align="center"></el-table-column>
-          <el-table-column prop="ys" label="百码投入标准价格" align="center"></el-table-column>
-          <el-table-column prop="ys" label="百码投入实际价格" align="center"></el-table-column>
-          <el-table-column prop="ys" label="标准偏差" align="center"></el-table-column>
+          <el-table-column prop="useQuantityTJJ2" label="使用数量" align="center" width="120"></el-table-column>
+          <el-table-column prop="danJiaTJJ2" label="单价" align="center" width="120"></el-table-column>
+          <el-table-column prop="useTotalTJJ2" label="总额" align="center" width="120"></el-table-column>
+          <el-table-column prop="baiMaBiaoZhunJiaGeTJJ2" label="百码投入标准价格" align="center" width="120"></el-table-column>
+          <el-table-column prop="baiMaRealJiaGeTJJ2" label="百码投入实际价格" align="center" width="120"></el-table-column>
+          <el-table-column prop="biaoZhunPianChaTJJ2" label="标准偏差" align="center" width="120"></el-table-column>
         </el-table-column>
         <el-table-column label="柠檬酸" align="center">
-          <el-table-column prop="ys" label="使用数量" align="center"></el-table-column>
-          <el-table-column prop="ys" label="单价" align="center"></el-table-column>
-          <el-table-column prop="ys" label="总额" align="center"></el-table-column>
-          <el-table-column prop="ys" label="百码投入标准价格" align="center"></el-table-column>
-          <el-table-column prop="ys" label="百码投入实际价格" align="center"></el-table-column>
-          <el-table-column prop="ys" label="标准偏差" align="center"></el-table-column>
+          <el-table-column prop="useQuantityNMS" label="使用数量" align="center" width="120"></el-table-column>
+          <el-table-column prop="danJiaNMS" label="单价" align="center" width="120"></el-table-column>
+          <el-table-column prop="useTotalNMS" label="总额" align="center" width="120"></el-table-column>
+          <el-table-column prop="baiMaBiaoZhunJiaGeNMS" label="百码投入标准价格" align="center" width="120"></el-table-column>
+          <el-table-column prop="baiMaRealJiaGeNMS" label="百码投入实际价格" align="center" width="120"></el-table-column>
+          <el-table-column prop="biaoZhunPianChaNMS" label="标准偏差" align="center" width="120"></el-table-column>
         </el-table-column>
       </el-table-column>
     </el-table>
-    <el-pagination
-      class="fy"
-      background
-      :page-size="pageSize"
-      layout="prev, pager, next"
-      :total="total"
-      @current-change="currentChange"
-    ></el-pagination>
   </div>
 </template>
 
@@ -74,238 +66,41 @@ export default {
   name: "interface5",
   data() {
     return {
-      total: 1000, //默认数据总数
-      pageSize: 20, //每页的数据条数
-      currentPage: 1, //默认开始页面
       screenHeight: document.body.clientHeight, //屏幕高度
-      tableHeight: window.innerHeight - 200, //table高度
-      baseTableData: [
-        {
-          id: "111",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "合计",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "222",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "1",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "333",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "2",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "1"
-        },
-        {
-          id: "444",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "3",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "555",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "4",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "666",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "5",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "777",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "6",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "888",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "7",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "999",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "8",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "123",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "9",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "321",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "141",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "1412",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "123",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "1241",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "123",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "4124",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        },
-        {
-          id: "1231",
-          gh: "经纱",
-          ys: "red",
-          zjcd: "12345",
-          csxm: "10",
-          xmmx: "出轴  kg/百米用量",
-          gybzz: "出轴  kg/百米用量",
-          state: "0"
-        }
-      ]
+      tableHeight: window.innerHeight - 100, //table高度
+      baseTableData: [],
+      loading: false
     };
   },
   methods: {
-    // 分页
-    currentChange(currentPage) {
-      this.$refs.table.bodyWrapper.scrollTop = 0;
-      this.currentPage = currentPage;
-    },
     // 加载默认页面
     loadInfo() {
-      // this.loading = true;
+      this.loading = true;
       // let _data = this.ruleForm;
-      // fgxtrApi
-      //   .getHouZhengShaiXuan(_data)
-      //   .then(res => {
-      //     this.baseTableData = res.data;
-      //     this.loading = false;
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
+      let _data = {
+        productionNo: "GZ2011-295"
+      };
+      sccbApi
+        .gethzfl(_data)
+        .then(res => {
+          this.baseTableData = res.data;
+          this.loading = false;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   mounted() {
-    // window.onresize = () => {
-    //   this.screenHeight = document.body.clientHeight;
-    //   this.tableHeight = this.screenHeight - 200;
-    // };
-    // var date = new Date();
-    // var year = date.getFullYear();
-    // var month = date.getMonth() + 1;
-    // var day = date.getDate();
-    // var time = year + "-" + month + "-" + day;
-    // this.$set(this.ruleForm, "choiceDate", time);
+    window.onresize = () => {
+      this.screenHeight = document.body.clientHeight;
+      this.tableHeight = this.screenHeight - 100;
+    };
     this.loadInfo();
   }
 };
 </script>
 
 <style scoped>
-.fy {
-  text-align: center;
-  margin-top: 20px;
-}
-.el-form--inline .el-form-item {
-  margin-right: 20px;
-}
+@import "./../../../assets/css/common.css";
 </style>

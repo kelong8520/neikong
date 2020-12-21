@@ -12,7 +12,7 @@
           <el-input v-model="ruleForm.batchNo"></el-input>
         </el-form-item>
         <el-form-item label="成品入仓时间">
-          <el-date-picker v-model="ruleForm.chengPinRuCangDate" type="date"></el-date-picker>
+          <el-date-picker value-format="yyyy-MM-dd" v-model="ruleForm.chengPinRuCangDate" type="date"></el-date-picker>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click.native="searchClick" class="button1">检索</el-button>
@@ -38,7 +38,11 @@
             <span v-else>{{scope.$index}}</span>
           </template> -->
         </el-table-column>
-        <el-table-column prop="textileNos" label="品种" align="center" width="120"></el-table-column>
+        <el-table-column label="品种" align="center" width="120">
+          <template slot-scope="scope">
+            <div v-html="scope.row.textileNos"></div>
+          </template>
+        </el-table-column>
         <el-table-column prop="batchNo" label="缸号" align="center" width="120"></el-table-column>
         <el-table-column prop="colorNo" label="色号" align="center" width="120"></el-table-column>
         <el-table-column prop="chengPinRuCangDate" label="成品入仓时间" align="center" width="120"></el-table-column>
@@ -174,6 +178,7 @@ export default {
     currentChange(currentPage) {
       this.$refs.table.bodyWrapper.scrollTop = 0;
       this.currentPage = currentPage;
+      this.loadInfo();
     },
     searchClick() {
       this.currentPage = 1;
@@ -202,12 +207,6 @@ export default {
       this.screenHeight = document.body.clientHeight;
       this.tableHeight = this.screenHeight - 200;
     };
-    // var date = new Date();
-    // var year = date.getFullYear();
-    // var month = date.getMonth() + 1;
-    // var day = date.getDate();
-    // var time = year + "-" + month + "-" + day;
-    // this.$set(this.ruleForm, "choiceDate", time);
     this.loadInfo();
   }
 };
