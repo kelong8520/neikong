@@ -12,26 +12,10 @@
           <el-input v-model="ruleForm.yarnName"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button
-            type="primary"
-            @click.native="resetClick"
-            class="button1"
-          >重新计算</el-button>
-          <el-button
-            type="primary"
-            @click.native="searchClick"
-            class="button1"
-          >检索</el-button>
-          <el-button
-            type="primary"
-            @click.native="sureClick"
-            class="button1"
-          >确定存入</el-button>
-          <el-button
-            type="primary"
-            @click.native="financialClick"
-            class="button1"
-          >财务审核</el-button>
+          <el-button type="primary" @click.native="resetClick" class="button1">重新计算</el-button>
+          <el-button type="primary" @click.native="searchClick" class="button1">检索</el-button>
+          <el-button type="primary" @click.native="sureClick" class="button1">确定存入</el-button>
+          <el-button type="primary" @click.native="financialClick" class="button1">财务审核</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -164,21 +148,29 @@ export default {
     },
     // 重新计算
     resetClick() {
-      this.loading = true;
-      let _data = this.ruleForm;
-      bzpApi
-        .getJiangRan(querystring.stringify(_data))
-        .then(res => {
-          if (!res.data) {
-            this.$message({ message: res.tipInfo, duration: 2000 });
-          } else {
-            this.baseTableData = res.data;
-          }
-          this.loading = false;
+      this.$confirm("是否对本月数据进行重新计算?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          this.loading = true;
+          let _data = this.ruleForm;
+          bzpApi
+            .getJiangRan(querystring.stringify(_data))
+            .then(res => {
+              if (!res.data) {
+                this.$message({ message: res.tipInfo, duration: 2000 });
+              } else {
+                this.baseTableData = res.data;
+              }
+              this.loading = false;
+            })
+            .catch(err => {
+              console.log(err);
+            });
         })
-        .catch(err => {
-          console.log(err);
-        });
+        .catch(() => {});
     },
     // 确定保存
     sureClick() {
@@ -188,9 +180,9 @@ export default {
         .addJiangRan(_data)
         .then(res => {
           // if (!res.data) {
-            this.$message({ message: res.tipInfo, duration: 2000 });
+          this.$message({ message: res.tipInfo, duration: 2000 });
           // } else {
-            this.loadInfo();
+          this.loadInfo();
           // }
           this.loading = false;
         })

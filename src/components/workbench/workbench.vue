@@ -57,7 +57,7 @@ export default {
   },
   watch: {
     tabName(val) {
-       console.log(val)
+      //  console.log(val)
       this.editableTabsValue = val;
     }
   },

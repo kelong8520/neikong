@@ -77,11 +77,11 @@ export default {
               name: "ydsjfsfy",
               icon: "el-icon-data-analysis"
             },
-            {
-              title: "1.1.4汇率维护",
-              name: "hlwh",
-              icon: "el-icon-data-analysis"
-            }
+            // {
+            //   title: "1.1.4汇率维护",
+            //   name: "hlwh",
+            //   icon: "el-icon-data-analysis"
+            // }
           ]
         },
         {

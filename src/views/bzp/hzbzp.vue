@@ -184,12 +184,12 @@ export default {
           bzpApi
             .getHouZheng(querystring.stringify(_data))
             .then(res => {
+              this.loading = false;
               if (!res.data) {
                 this.$message({ message: res.tipInfo, duration: 2000 });
               } else {
                 this.baseTableData = res.data;
               }
-              this.loading = false;
             })
             .catch(err => {
               console.log(err);

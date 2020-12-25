@@ -69,12 +69,18 @@
         <el-table-column prop="zhiFuJinE" label="金额" align="center">
           <template slot-scope="scope">
             <div v-if="scope.$index < colIndex -1">
-              <el-input-number
+              <!-- <el-input-number
                 v-model="scope.row.zhiFuJinE"
                 :controls="false"
                 :precision="2"
                 :min="0"
                 :disabled="scope.row.shiJiYongLiangJinEHeJi == 0"
+              ></el-input-number> -->
+              <el-input-number
+                v-model="scope.row.zhiFuJinE"
+                :controls="false"
+                :precision="2"
+                :min="0"
               ></el-input-number>
             </div>
             <div v-else-if="scope.$index == colIndex-1">{{null}}</div>
@@ -84,9 +90,12 @@
         <el-table-column prop="zhiFuFangShi" label="支付方式" align="center">
           <template slot-scope="scope">
             <div v-if="scope.$index < colIndex -1">
-              <el-input
+              <!-- <el-input
                 v-model="scope.row.zhiFuFangShi"
                 :disabled="scope.row.shiJiYongLiangJinEHeJi == 0"
+              ></el-input> -->
+              <el-input
+                v-model="scope.row.zhiFuFangShi"
               ></el-input>
             </div>
             <div v-else-if="scope.$index == colIndex-1">{{null}}</div>

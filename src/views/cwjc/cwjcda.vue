@@ -31,7 +31,7 @@
       <el-table-column prop="jsfs" label="计算方式" align="center"></el-table-column>
       <el-table-column prop="remarks" label="备注" align="center"></el-table-column>
       <el-table-column prop="operator" label="操作人" align="center"></el-table-column>
-      <el-table-column prop="updateTime" label="更新日期" align="center"></el-table-column>
+      <el-table-column prop="updateTime" label="更新日期" align="center" width="180"></el-table-column>
       <el-table-column label="操作" width="240" align="center">
         <template slot-scope="scope">
           <el-button
