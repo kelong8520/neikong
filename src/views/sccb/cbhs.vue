@@ -354,240 +354,240 @@ export default {
       let name = "interface1";
       let arr = this.$store.state.tabArr
         .filter(item => item.name == name)
-        .map(item => item.id);
+        .map(item => item.productionNo);
       let title = "浆染原料投入";
 
-      if (arr.includes(row.id)) {
+      if (arr.includes(row.productionNo)) {
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
         });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       } else {
         store.commit("addTabArr", {
           name,
           title,
-          id: row.id
+          productionNo: row.productionNo
         });
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
         });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       }
     },
     childInterface2(row) {
       let name = "interface2";
       let arr = this.$store.state.tabArr
         .filter(item => item.name == name)
-        .map(item => item.id);
+        .map(item => item.productionNo);
       let title = "浆染辅料投入";
 
-      if (arr.includes(row.id)) {
+      if (arr.includes(row.productionNo)) {
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
         });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       } else {
         store.commit("addTabArr", {
           name,
           title,
-          id: row.id
+          productionNo: row.productionNo
         });
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
         });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       }
     },
     childInterface3(row) {
       let name = "interface3";
       let arr = this.$store.state.tabArr
         .filter(item => item.name == name)
-        .map(item => item.id);
+        .map(item => item.productionNo);
       let title = "浆染能耗投入";
 
-      if (arr.includes(row.id)) {
+      if (arr.includes(row.productionNo)) {
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
         });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       } else {
         store.commit("addTabArr", {
           name,
           title,
-          id: row.id
+          productionNo: row.productionNo
         });
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
         });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       }
     },
     childInterface4(row) {
       let name = "interface4";
       let arr = this.$store.state.tabArr
         .filter(item => item.name == name)
-        .map(item => item.id);
+        .map(item => item.productionNo);
       let title = "织造原料投入";
 
-      if (arr.includes(row.id)) {
+      if (arr.includes(row.productionNo)) {
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
         });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       } else {
         store.commit("addTabArr", {
           name,
           title,
-          id: row.id
+          productionNo: row.productionNo
         });
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
         });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       }
     },
     childInterface5(row) {
       let name = "interface5";
       let arr = this.$store.state.tabArr
         .filter(item => item.name == name)
-        .map(item => item.id);
+        .map(item => item.productionNo);
       let title = "后整辅料投入";
 
-      if (arr.includes(row.id)) {
+      if (arr.includes(row.productionNo)) {
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
         });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       } else {
         store.commit("addTabArr", {
           name,
           title,
-          id: row.id
+          productionNo: row.productionNo
         });
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
         });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       }
     },
     childInterface6(row) {
       let name = "interface6";
       let arr = this.$store.state.tabArr
         .filter(item => item.name == name)
-        .map(item => item.id);
+        .map(item => item.productionNo);
       let title = "后整能耗投入";
 
-      if (arr.includes(row.id)) {
+      if (arr.includes(row.productionNo)) {
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
         });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       } else {
         store.commit("addTabArr", {
           name,
           title,
-          id: row.id
+          productionNo: row.productionNo
         });
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
         });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       }
     },
     childInterface7(row) {
       let name = "interface7";
       let arr = this.$store.state.tabArr
         .filter(item => item.name == name)
-        .map(item => item.id);
+        .map(item => item.productionNo);
       let title = "机物料投入";
 
-      if (arr.includes(row.id)) {
+      if (arr.includes(row.productionNo)) {
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
         });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       } else {
         store.commit("addTabArr", {
           name,
           title,
-          id: row.id
+          productionNo: row.productionNo
         });
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
         });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       }
     },
     childInterface8(row) {
       let name = "interface8";
       let arr = this.$store.state.tabArr
         .filter(item => item.name == name)
-        .map(item => item.id);
+        .map(item => item.productionNo);
       let title = "人工投入";
 
-      if (arr.includes(row.id)) {
+      if (arr.includes(row.productionNo)) {
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
-        });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        }); 
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       } else {
         store.commit("addTabArr", {
           name,
           title,
-          id: row.id
+          productionNo: row.productionNo
         });
         this.$router.push({
           path: name,
           query: {
-            id: row.id
+            productionNo: row.productionNo
           }
         });
-        store.commit("modifyTabName", `${name}?${row.id}`);
+        store.commit("modifyTabName", `${name}?${row.productionNo}`);
       }
     },
     // 分页

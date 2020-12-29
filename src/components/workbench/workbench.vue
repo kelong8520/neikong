@@ -8,10 +8,10 @@
         @tab-click="handleCheck"
       >
         <el-tab-pane
-          :key="item.name"
+          :key="`${item.name}${item.productionNo?'?'+item.productionNo:''}`"
           v-for="(item,idx) in editableTabs"
           :label="item.title"
-          :name="`${item.id?item.name+'?'+item.id:item.name}`"
+          :name="`${item.name}${item.productionNo?'?'+item.productionNo:''}`"
           :closable="idx != 0"
         >
       
@@ -95,17 +95,17 @@ export default {
         if (modelName == this.tabName) {
           this.editableTabs.forEach((item, i) => {
             let name;
-            if (item.id) {
-              name = item.name + "?" + item.id;
+            if (item.productionNo) {
+              name = item.name + "?" + item.productionNo;
             } else {
               name = item.name;
             }
             if (name == modelName) {
-              if (this.editableTabs[i - 1].id) {
+              if (this.editableTabs[i - 1].productionNo) {
                 newName =
                   this.editableTabs[i - 1].name +
                   "?" +
-                  this.editableTabs[i - 1].id;
+                  this.editableTabs[i - 1].productionNo;
               } else {
                 newName = this.editableTabs[i - 1].name;
               }
@@ -116,7 +116,7 @@ export default {
           if (newName.includes("?")) {
             this.$router.push({
               name: newName.split("?")[0],
-              query: { id: newName.split("?")[1] }
+              query: { productionNo: newName.split("?")[1] }
             });
           } else {
             this.$router.push({ name: newName });
@@ -130,7 +130,7 @@ export default {
       if (insteance.paneName.includes("?")) {
         this.$router.push({
           name: insteance.paneName.split("?")[0],
-          query: { id: insteance.paneName.split("?")[1] }
+          query: { productionNo: insteance.paneName.split("?")[1] }
         });
       } else {
         this.$router.push({ name: insteance.paneName });

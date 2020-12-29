@@ -16,8 +16,8 @@ const mutations = {
     // 添加tab数组
     addTabArr(state, model){
       state.tabArr.push(model)
-      if (model.id) {
-        state.tabName = model.name + '?' + model.id;
+      if (model.productionNo) {
+        state.tabName = model.name + '?' + model.productionNo;
       } else {
         state.tabName = model.name;
       }
@@ -25,7 +25,7 @@ const mutations = {
     // 删除tab数组
     deleteTabArr(state, modelName){
       if (modelName.includes('?')) {
-        state.tabArr = state.tabArr.filter(item => !(item.name == modelName.split('?')[0] && item.id == modelName.split('?')[1]))
+        state.tabArr = state.tabArr.filter(item => !(item.name == modelName.split('?')[0] && item.productionNo == modelName.split('?')[1]))
       } else {
         state.tabArr = state.tabArr.filter(item => item.name != modelName)
       }

@@ -12,10 +12,10 @@
           <el-input v-model="ruleForm.batchNo"></el-input>
         </el-form-item>
         <el-form-item label="经纱">
-          <el-input v-model="ruleForm.a"></el-input>
+          <el-input v-model="ruleForm.warpName"></el-input>
         </el-form-item>
         <el-form-item label="纬纱">
-          <el-input v-model="ruleForm.a"></el-input>
+          <el-input v-model="ruleForm.weftName"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click.native="searchClick" class="button1">检索</el-button>

@@ -32,7 +32,16 @@
 
         <el-main class="mainBackground">
           <div class="pagetitle" v-if="$route.path =='/index'">内控及生产成本管理</div>
-          <router-view v-if="flag"></router-view>
+          <template v-if="flag">
+            <router-view v-if="!$route.meta.keepAlive"></router-view>
+            <!-- <router-view v-if="!$route.meta.keepAlive && flag"></router-view> -->
+            <!-- <router-view v-else-if="flag"></router-view> -->
+            <!-- <router-view v-if="flag"></router-view> -->
+            <keep-alive>
+              <router-view v-if="$route.meta.keepAlive"></router-view>
+              <!-- <router-view v-if="$route.meta.keepAlive && flag"></router-view> -->
+            </keep-alive>
+          </template>
         </el-main>
       </el-container>
     </el-container>
@@ -76,7 +85,7 @@ export default {
               title: "1.1.3月度实际发生费用",
               name: "ydsjfsfy",
               icon: "el-icon-data-analysis"
-            },
+            }
             // {
             //   title: "1.1.4汇率维护",
             //   name: "hlwh",
@@ -218,7 +227,9 @@ export default {
     }
   },
   created() {},
-  mounted() {}
+  mounted() {
+    this.flag = true;
+  }
 };
 </script>
 

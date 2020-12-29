@@ -14,6 +14,8 @@
         :picker-options="pickerOptions"
         @change="timeChange"
       ></el-date-picker>
+        <!-- :clearable="false" -->
+      <el-button type="primary" @click.native="searchList" class="button1">检索</el-button>
     </div>
     <el-table
       highlight-current-row
@@ -175,9 +177,14 @@ export default {
   },
   methods: {
     timeChange(value) {
-      this.startTime = value[0];
-      this.endTime = value[1];
-      console.log(this.startTime,this.endTime)
+      if(value == null){
+        this.startTime = "";
+        this.endTime = "";
+      }else{
+        this.startTime = value[0];
+        this.endTime = value[1];
+      }
+      // console.log(this.startTime,this.endTime)
     },
     searchList() {
       this.currentPage = 1;

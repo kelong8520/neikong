@@ -69,8 +69,16 @@ export default {
       screenHeight: document.body.clientHeight, //屏幕高度
       tableHeight: window.innerHeight - 100, //table高度
       baseTableData: [],
-      loading: false
+      loading: false,
+      productionNo:"",
     };
+  },
+  beforeRouteUpdate(to, from, next) {
+    //next方法使URL显示正常
+    next();
+    //数据改变的方法（此处为自定义的数据改变方法）
+    this.productionNo = to.query.productionNo;
+    this.loadInfo();
   },
   methods: {
     // 加载默认页面
@@ -78,7 +86,7 @@ export default {
       this.loading = true;
       // let _data = this.ruleForm;
       let _data = {
-        productionNo: "GZ2011-295"
+        productionNo: this.productionNo
       };
       sccbApi
         .gethzfl(_data)
@@ -96,6 +104,7 @@ export default {
       this.screenHeight = document.body.clientHeight;
       this.tableHeight = this.screenHeight - 100;
     };
+    this.productionNo = this.$route.query.productionNo;
     this.loadInfo();
   }
 };

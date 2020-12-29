@@ -15,10 +15,10 @@
           <el-input v-model="ruleForm.batchNo"></el-input>
         </el-form-item>
         <el-form-item label="经纱">
-          <el-input v-model="ruleForm.val"></el-input>
+          <el-input v-model="ruleForm.warpName"></el-input>
         </el-form-item>
         <el-form-item label="纬纱">
-          <el-input v-model="ruleForm.val"></el-input>
+          <el-input v-model="ruleForm.weftName"></el-input>
         </el-form-item>
         <!-- <el-form-item label="出纱时间">
           <el-date-picker v-model="ruleForm.val" type="date"></el-date-picker>

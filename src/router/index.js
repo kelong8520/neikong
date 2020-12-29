@@ -139,6 +139,10 @@ const routes = [
             path: '/cbhs',
             name: 'cbhs',
             component: () => import("@/views/sccb/cbhs"),
+            meta: {
+              keepAlive: true,
+              scollTopPosition: 0
+            }
           },
           // 子界面1
           {
