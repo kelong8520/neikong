@@ -594,6 +594,7 @@ export default {
     currentChange(currentPage) {
       this.$refs.table.bodyWrapper.scrollTop = 0;
       this.currentPage = currentPage;
+      this.loadInfo();
     },
     searchList() {
       this.currentPage = 1;

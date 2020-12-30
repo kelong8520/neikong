@@ -59,28 +59,28 @@
       <el-table-column prop="productionNo" label="生产单号" align="center" width="120"></el-table-column>
       <el-table-column prop="textileNo" label="品种" align="center" width="120"></el-table-column>
       <el-table-column prop="batchNo" label="缸号" align="center" width="120"></el-table-column>
-      <el-table-column label="审批状态" align="center">
+      <el-table-column label="审批状态" align="center" width="120">
         <template slot-scope="scope">
           <div>{{scope.row.state == 0?"未审核":scope.row.state == 1?"已审核":""}}</div>
         </template>
       </el-table-column>
       <el-table-column label="期初库存" align="center">
-        <el-table-column prop="jianShuQC" label="件数" align="center"></el-table-column>
-        <el-table-column prop="lengthQC" label="长度(m)" align="center"></el-table-column>
+        <el-table-column prop="jianShuQC" label="件数" align="center" width="120"></el-table-column>
+        <el-table-column prop="lengthQC" label="长度(m)" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="本期收坯" align="center">
-        <el-table-column prop="jianShuSP" label="件数" align="center"></el-table-column>
-        <el-table-column prop="lengthSP" label="长度(m)" align="center"></el-table-column>
+        <el-table-column prop="jianShuSP" label="件数" align="center" width="120"></el-table-column>
+        <el-table-column prop="lengthSP" label="长度(m)" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="本期入仓" align="center">
-        <el-table-column prop="jianShuRC" label="件数" align="center"></el-table-column>
-        <el-table-column prop="lengthRC" label="长度(m)" align="center"></el-table-column>
+        <el-table-column prop="jianShuRC" label="件数" align="center" width="120"></el-table-column>
+        <el-table-column prop="lengthRC" label="长度(m)" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="本期结存" align="center">
-        <el-table-column prop="jianShuJC" label="件数" align="center"></el-table-column>
-        <el-table-column prop="lengthJC" label="长度(m)" align="center"></el-table-column>
+        <el-table-column prop="jianShuJC" label="件数" align="center" width="120"></el-table-column>
+        <el-table-column prop="lengthJC" label="长度(m)" align="center" width="120"></el-table-column>
       </el-table-column>
-      <el-table-column label="实际盘点数量" align="center">
+      <el-table-column label="实际盘点数量" align="center" width="120">
         <el-table-column label="件数" align="center">
           <template slot-scope="scope">
             <div v-if="scope.$index == 0">{{scope.row.jianShuReal}}</div>
@@ -89,7 +89,7 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="长度(m)" align="center">
+        <el-table-column label="长度(m)" align="center" width="120">
           <template slot-scope="scope">
             <div v-if="scope.$index == 0">{{scope.row.lengthReal}}</div>
             <div v-else>
@@ -99,10 +99,10 @@
         </el-table-column>
       </el-table-column>
       <el-table-column label="系统实物盘点差" align="center">
-        <el-table-column prop="jianShuPanDianCha" label="件数" align="center"></el-table-column>
-        <el-table-column prop="lengthPanDianCha" label="长度(m)" align="center"></el-table-column>
+        <el-table-column prop="jianShuPanDianCha" label="件数" align="center" width="120"></el-table-column>
+        <el-table-column prop="lengthPanDianCha" label="长度(m)" align="center" width="120"></el-table-column>
       </el-table-column>
-      <el-table-column label="最终确认盘点结存" align="center">
+      <el-table-column label="最终确认盘点结存" align="center" width="120">
         <el-table-column label="件数" align="center">
           <template slot-scope="scope">
             <div v-if="scope.$index == 0">{{scope.row.jianShuJieCun}}</div>
@@ -111,7 +111,7 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="长度(m)" align="center">
+        <el-table-column label="长度(m)" align="center" width="120">
           <template slot-scope="scope">
             <div v-if="scope.$index == 0">{{scope.row.lengthJieCun}}</div>
             <div v-else>
@@ -120,7 +120,7 @@
           </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column prop="remarks" label="备注" align="center"></el-table-column>
+      <el-table-column prop="remarks" label="备注" align="center" width="120"></el-table-column>
     </el-table>
   </div>
 </template>

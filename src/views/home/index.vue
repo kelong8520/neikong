@@ -33,13 +33,13 @@
         <el-main class="mainBackground">
           <div class="pagetitle" v-if="$route.path =='/index'">内控及生产成本管理</div>
           <template v-if="flag">
-            <router-view v-if="!$route.meta.keepAlive"></router-view>
-            <!-- <router-view v-if="!$route.meta.keepAlive && flag"></router-view> -->
+            <!-- <router-view v-if="!$route.meta.keepAlive"></router-view> -->
+            <router-view v-if="$route.meta.keepAlive && flag"></router-view>
             <!-- <router-view v-else-if="flag"></router-view> -->
             <!-- <router-view v-if="flag"></router-view> -->
             <keep-alive>
-              <router-view v-if="$route.meta.keepAlive"></router-view>
-              <!-- <router-view v-if="$route.meta.keepAlive && flag"></router-view> -->
+              <!-- <router-view v-if="$route.meta.keepAlive"></router-view> -->
+              <router-view v-if="!$route.meta.keepAlive && flag"></router-view>
             </keep-alive>
           </template>
         </el-main>

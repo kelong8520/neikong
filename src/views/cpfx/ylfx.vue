@@ -35,10 +35,10 @@
       v-loading="loading"
     >
       <el-table-column type="index" label="序号" align="center">
-        <!-- <template slot-scope="scope">
+        <template slot-scope="scope">
           <span v-if="scope.$index === 0"></span>
           <span v-else>{{scope.$index}}</span>
-        </template> -->
+        </template>
       </el-table-column>
       <el-table-column prop="textileNo" label="品种" align="center" width="120"></el-table-column>
       <el-table-column prop="batchNo" label="缸号" align="center" width="120"></el-table-column>
@@ -159,19 +159,19 @@ export default {
   },
   methods: {
     arraySpanMethod({ row, column, rowIndex, columnIndex }) {
-      // if (rowIndex === 0) {
-      //   if (columnIndex === 1) {
-      //     return [1, 3];
-      //   } else if (columnIndex == 2) {
-      //     return [0, 0];
-      //   } else if (columnIndex == 3) {
-      //     return [0, 0];
-      //   } else if (columnIndex <= 25) {
-      //     return [1, 1];
-      //   } else {
-      //     return [0, 0];
-      //   }
-      // }
+      if (rowIndex === 0) {
+        if (columnIndex === 1) {
+          return [1, 3];
+        } else if (columnIndex == 2) {
+          return [0, 0];
+        } else if (columnIndex == 3) {
+          return [0, 0];
+        } else if (columnIndex <= 25) {
+          return [1, 1];
+        } else {
+          return [0, 0];
+        }
+      }
     },
     // 分页
     currentChange(currentPage) {

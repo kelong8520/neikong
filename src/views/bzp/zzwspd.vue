@@ -51,25 +51,25 @@
         </template>
       </el-table-column>
       <el-table-column prop="productionNo" label="生产单号" align="center" width="120"></el-table-column>
-      <el-table-column prop="batchNo" label="缸号" align="center"></el-table-column>
-      <el-table-column prop="yarnName" label="纬纱名称" align="center" width="180"></el-table-column>
-      <el-table-column label="审批状态" align="center" width="70">
+      <el-table-column prop="batchNo" label="缸号" align="center" width="120"></el-table-column>
+      <el-table-column prop="yarnName" label="纬纱名称" align="center" width="120"></el-table-column>
+      <el-table-column label="审批状态" align="center" width="120">
         <template slot-scope="scope">
           <div>{{scope.row.state == 0?"未审核":scope.row.state == 1?"已审核":""}}</div>
         </template>
       </el-table-column>
       <el-table-column label="期初库存" align="center">
-        <el-table-column prop="weightQC" label="重量(kg)" align="center"></el-table-column>
-        <el-table-column prop="geShuQC" label="个数" align="center"></el-table-column>
+        <el-table-column prop="weightQC" label="重量(kg)" align="center" width="120"></el-table-column>
+        <el-table-column prop="geShuQC" label="个数" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="本期领入" align="center">
-        <el-table-column prop="weightLR" label="重量(kg)" align="center"></el-table-column>
-        <el-table-column prop="geShuLR" label="个数" align="center"></el-table-column>
+        <el-table-column prop="weightLR" label="重量(kg)" align="center" width="120"></el-table-column>
+        <el-table-column prop="geShuLR" label="个数" align="center" width="120"></el-table-column>
       </el-table-column>
-      <el-table-column prop="weightTR" label="本期投入" align="center"></el-table-column>
-      <el-table-column prop="weightJC" label="本期结存" align="center"></el-table-column>
+      <el-table-column prop="weightTR" label="本期投入" align="center" width="120"></el-table-column>
+      <el-table-column prop="weightJC" label="本期结存" align="center" width="120"></el-table-column>
       <el-table-column label="实际盘点数量" align="center">
-        <el-table-column label="重量(kg)" align="center">
+        <el-table-column label="重量(kg)" align="center" width="120">
           <template slot-scope="scope">
             <div v-if="scope.$index == 0">{{scope.row.weightReal}}</div>
             <div v-else>
@@ -77,7 +77,7 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="个数" align="center">
+        <el-table-column label="个数" align="center" width="120">
           <template slot-scope="scope">
             <div v-if="scope.$index == 0">{{scope.row.geShuReal}}</div>
             <div v-else>
@@ -86,8 +86,8 @@
           </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column prop="weightPanDianCha" label="系统实物盘点差" align="center"></el-table-column>
-      <el-table-column label="最终确认盘点结存" align="center">
+      <el-table-column prop="weightPanDianCha" label="系统实物盘点差" align="center" width="120"></el-table-column>
+      <el-table-column label="最终确认盘点结存" align="center" width="120">
         <el-table-column label="重量(kg)" align="center">
           <template slot-scope="scope">
             <div v-if="scope.$index == 0">{{scope.row.weightJieCun}}</div>
@@ -96,7 +96,7 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="个数" align="center">
+        <el-table-column label="个数" align="center" width="120">
           <template slot-scope="scope">
             <div v-if="scope.$index == 0">{{scope.row.geShuJieCun}}</div>
             <div v-else>
@@ -105,7 +105,7 @@
           </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column prop="remarks" label="备注" align="center"></el-table-column>
+      <el-table-column prop="remarks" label="备注" align="center" width="120"></el-table-column>
     </el-table>
   </div>
 </template>

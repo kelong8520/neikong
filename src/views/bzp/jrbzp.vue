@@ -40,33 +40,33 @@
       <el-table-column prop="productionNo" label="生产单号" align="center" width="120"></el-table-column>
       <el-table-column prop="textileNo" label="品种" align="center" width="120"></el-table-column>
       <el-table-column prop="batchNo" label="缸号" align="center" width="120"></el-table-column>
-      <el-table-column prop="yarnName" label="纱名" align="center" width="160"></el-table-column>
-      <el-table-column label="审批状态" align="center">
+      <el-table-column prop="yarnName" label="纱名" align="center" width="120"></el-table-column>
+      <el-table-column label="审批状态" align="center" width="120">
         <template slot-scope="scope">
           <div>{{scope.row.state == 0?"未审核":scope.row.state == 1?"已审核":""}}</div>
         </template>
       </el-table-column>
-      <el-table-column prop="panDianDate" label="盘点时间" align="center" width="170"></el-table-column>
+      <el-table-column prop="panDianDate" label="盘点时间" align="center" width="120"></el-table-column>
       <el-table-column label="期初数据" align="center">
-        <el-table-column prop="weightQC" label="重量(kg)" align="center"></el-table-column>
-        <el-table-column prop="zhouShuQC" label="轴数" align="center"></el-table-column>
+        <el-table-column prop="weightQC" label="重量(kg)" align="center" width="120"></el-table-column>
+        <el-table-column prop="zhouShuQC" label="轴数" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="投入经纱" align="center">
-        <el-table-column prop="lengthTR" label="整经长度(m)" align="center"></el-table-column>
-        <el-table-column prop="zhengJingGeShuTR" label="整经(个)" align="center"></el-table-column>
-        <el-table-column prop="touRuDate" label="时间" align="center" width="170"></el-table-column>
-        <el-table-column prop="weightTR" label="重量(kg)" align="center"></el-table-column>
+        <el-table-column prop="lengthTR" label="整经长度(m)" align="center" width="120"></el-table-column>
+        <el-table-column prop="zhengJingGeShuTR" label="整经(个)" align="center" width="120"></el-table-column>
+        <el-table-column prop="touRuDate" label="时间" align="center" width="120"></el-table-column>
+        <el-table-column prop="weightTR" label="重量(kg)" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="浆染出轴" align="center">
-        <el-table-column prop="chuZhouDate" label="时间" align="center"></el-table-column>
-        <el-table-column prop="lengthCZ" label="长度(m)" align="center"></el-table-column>
+        <el-table-column prop="chuZhouDate" label="时间" align="center" width="120"></el-table-column>
+        <el-table-column prop="lengthCZ" label="长度(m)" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="现场存纱量" align="center">
-        <el-table-column prop="weightJC" label="重量(kg)" align="center"></el-table-column>
-        <el-table-column prop="zhouShuJC" label="轴数" align="center"></el-table-column>
+        <el-table-column prop="weightJC" label="重量(kg)" align="center" width="120"></el-table-column>
+        <el-table-column prop="zhouShuJC" label="轴数" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="实际盘点数量" align="center">
-        <el-table-column prop="weightReal" label="重量(kg)" align="center">
+        <el-table-column prop="weightReal" label="重量(kg)" align="center" width="120">
           <template slot-scope="scope">
             <div v-if="scope.$index == 0">{{scope.row.weightReal}}</div>
             <div v-else>
@@ -74,7 +74,7 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="zhouShuReal" label="轴数" align="center">
+        <el-table-column prop="zhouShuReal" label="轴数" align="center" width="120">
           <template slot-scope="scope">
             <div v-if="scope.$index == 0">{{scope.row.zhouShuReal}}</div>
             <div v-else>
@@ -83,8 +83,8 @@
           </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column prop="weightPanDianCha" label="系统实物盘点差(Kg)" align="center"></el-table-column>
-      <el-table-column label="最终确认盘点结存(Kg)" align="center">
+      <el-table-column prop="weightPanDianCha" label="系统实物盘点差(Kg)" align="center" width="120"></el-table-column>
+      <el-table-column label="最终确认盘点结存(Kg)" align="center" width="120">
         <template slot-scope="scope">
           <div v-if="scope.$index == 0">{{scope.row.weightJieCun}}</div>
           <div v-else>
@@ -92,7 +92,7 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column prop="remarks" label="备注" align="center"></el-table-column>
+      <el-table-column prop="remarks" label="备注" align="center" width="120"></el-table-column>
     </el-table>
   </div>
 </template>
