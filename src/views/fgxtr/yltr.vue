@@ -191,9 +191,9 @@ export default {
   methods: {
     arraySpanMethod({ row, column, rowIndex, columnIndex }) {
       if (rowIndex === 0) {
-        if (columnIndex === 1) {
+        if (columnIndex === 2) {
           return [1, 4];
-        } else if (columnIndex == 2) {
+        } else if (columnIndex == 1) {
           return [0, 0];
         } else if (columnIndex == 3) {
           return [0, 0];

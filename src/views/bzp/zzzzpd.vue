@@ -17,6 +17,13 @@
         <el-form-item label="轴号">
           <el-input v-model="ruleForm.rollerNo"></el-input>
         </el-form-item>
+        <el-form-item label="结存是否为零">
+          <el-select v-model="ruleForm.isJieCun">
+            <el-option label="全部" value=""></el-option>
+            <el-option label="是" value="1"></el-option>
+            <el-option label="否" value="0"></el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item>
           <el-button
             type="primary"
@@ -42,6 +49,7 @@
       </el-form>
     </div>
     <el-table
+      id="out-table"
       highlight-current-row
       style="width: 100%"
       :height="tableHeight"
@@ -149,6 +157,8 @@
 <script>
 import * as bzpApi from "@/api/bzpApi.js";
 import querystring from "querystring";
+import FileSaver from "file-saver";
+import XLSX from "xlsx";
 
 export default {
   name: "zzzzpd",
@@ -271,6 +281,28 @@ export default {
             });
         })
         .catch(() => {});
+    },
+    // 导出
+    exportExcel() {
+      this.downloadLoading = true;
+      /* generate workbook object from table */
+      var wb = XLSX.utils.table_to_book(document.querySelector("#out-table"));
+      /* get binary string as output */
+      var wbout = XLSX.write(wb, {
+        bookType: "xlsx",
+        bookSST: true,
+        type: "array"
+      });
+      try {
+        FileSaver.saveAs(
+          new Blob([wbout], { type: "application/octet-stream" }),
+          "浆染半制品盘点明细表.xlsx"
+        );
+        this.downloadLoading = false;
+      } catch (e) {
+        if (typeof console !== "undefined") console.log(e, wbout);
+      }
+      return wbout;
     },
     // 加载默认页面
     loadInfo() {

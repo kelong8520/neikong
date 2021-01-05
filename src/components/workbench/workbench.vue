@@ -71,7 +71,7 @@ export default {
       });
     },
     reload() {
-      console.log(this)
+      // console.log(this)
       this.$emit("reload");
       // let index;
       //   this.editableTabs.forEach((item,i) => {
