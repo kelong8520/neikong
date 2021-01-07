@@ -16,32 +16,17 @@
         </el-form-item>
         <el-form-item label="结存是否为零">
           <el-select v-model="ruleForm.isJieCun">
-            <el-option label="全部" value=""></el-option>
+            <el-option label="全部" value></el-option>
             <el-option label="是" value="1"></el-option>
             <el-option label="否" value="0"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button
-            type="primary"
-            @click.native="calculateClick"
-            class="button1"
-          >重新计算</el-button>
-          <el-button
-            type="primary"
-            @click.native="searchClick"
-            class="button1"
-          >检索</el-button>
-          <el-button
-            type="primary"
-            @click.native="sureClick"
-            class="button1"
-          >确定存入</el-button>
-          <el-button
-            type="primary"
-            @click.native="financialClick"
-            class="button1"
-          >财务审核</el-button>
+          <el-button type="primary" @click.native="calculateClick" class="button1">重新计算</el-button>
+          <el-button type="primary" @click.native="searchClick" class="button1">检索</el-button>
+          <el-button type="primary" @click.native="sureClick" class="button1">确定存入</el-button>
+          <el-button type="primary" @click.native="financialClick" class="button1">财务审核</el-button>
+          <el-button type="primary" @click.native="exportExcel" class="button1">导出excel</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -57,6 +42,9 @@
       :data="baseTableData"
       :span-method="arraySpanMethod"
       v-loading="loading"
+      element-loading-text="努力加载中..."
+      element-loading-spinner="el-icon-loading"
+      element-loading-background="rgba(255,255, 255, 0.9)"
     >
       <el-table-column type="index" label="序号" align="center">
         <template slot-scope="scope">
@@ -128,7 +116,14 @@
           </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column prop="remarks" label="备注" align="center" width="120"></el-table-column>
+      <el-table-column label="备注" align="center" width="120">
+        <template slot-scope="scope">
+          <div v-if="scope.$index == 0">{{scope.row.remarks}}</div>
+          <div v-else>
+            <el-input v-model="scope.row.remarks"></el-input>
+          </div>
+        </template>
+      </el-table-column>
     </el-table>
   </div>
 </template>
@@ -138,6 +133,7 @@ import * as bzpApi from "@/api/bzpApi.js";
 import querystring from "querystring";
 import FileSaver from "file-saver";
 import XLSX from "xlsx";
+import "./../../assets/css/common.css";
 
 export default {
   name: "zzpbpd",
@@ -216,9 +212,9 @@ export default {
         .addPiBu(_data)
         .then(res => {
           // if (!res.data) {
-            this.$message({ message: res.tipInfo, duration: 2000 });
+          this.$message({ message: res.tipInfo, duration: 2000 });
           // } else {
-            this.loadInfo();
+          this.loadInfo();
           // }
           this.loading = false;
         })
@@ -265,7 +261,7 @@ export default {
       try {
         FileSaver.saveAs(
           new Blob([wbout], { type: "application/octet-stream" }),
-          "浆染半制品盘点明细表.xlsx"
+          "织造坯布盘点明细细表.xlsx"
         );
         this.downloadLoading = false;
       } catch (e) {
@@ -296,6 +292,7 @@ export default {
     var date = new Date();
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
+    month = month.toString().padStart(2, '0')
     // var day = date.getDate();
     var time = year + "-" + month;
     this.$set(this.ruleForm, "choiceDate", time);
@@ -305,5 +302,5 @@ export default {
 </script>
 
 <style scoped>
-@import "./../../assets/css/common.css";
+
 </style>

@@ -39,6 +39,9 @@
       :data="baseTableData"
       :span-method="arraySpanMethod"
       v-loading="loading"
+      element-loading-text="努力加载中..."
+      element-loading-spinner="el-icon-loading"
+      element-loading-background="rgba(255,255, 255, 0.9)"
     >
       <el-table-column type="index" label="序号" align="center">
         <template slot-scope="scope">
@@ -109,7 +112,14 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column prop="remarks" label="备注" align="center" width="120"></el-table-column>
+      <el-table-column label="备注" align="center" width="120">
+        <template slot-scope="scope">
+          <div v-if="scope.$index == 0">{{scope.row.remarks}}</div>
+          <div v-else>
+            <el-input v-model="scope.row.remarks"></el-input>
+          </div>
+        </template>
+      </el-table-column>
     </el-table>
   </div>
 </template>
@@ -119,6 +129,7 @@ import * as bzpApi from "@/api/bzpApi.js";
 import querystring from "querystring";
 import FileSaver from "file-saver";
 import XLSX from "xlsx";
+import "./../../assets/css/common.css";
 
 export default {
   name: "jrbzp",
@@ -277,6 +288,7 @@ export default {
     var date = new Date();
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
+    month = month.toString().padStart(2, '0')
     // var day = date.getDate();
     var time = year + "-" + month;
     this.$set(this.ruleForm, "choiceDate", time);
@@ -286,5 +298,5 @@ export default {
 </script>
 
 <style scoped>
-@import "./../../assets/css/common.css";
+
 </style>
