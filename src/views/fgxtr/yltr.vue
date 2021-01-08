@@ -69,7 +69,7 @@
             </template>
         </el-table-column>
         <el-table-column label="经纱投入" align="center">
-          <el-table-column label="出库时间" align="center" width="120">
+          <!-- <el-table-column label="出库时间" align="center" width="120">
             <template slot-scope="scope">
               <a
                 :href="'http://www.baidu.com?' + scope.row.id"
@@ -78,7 +78,7 @@
                 v-html="scope.row.chuKuDate"
               ></a>
             </template>
-          </el-table-column>
+          </el-table-column> -->
           <el-table-column label="整经长度(m)" align="center" width="120">
             <template slot-scope="scope">
               <div v-html="scope.row.zhengJingLength"></div>
@@ -109,9 +109,9 @@
         </el-table-column>
       </el-table-column>
       <el-table-column label="织造原料投入产出信息" align="center">
-        <el-table-column label="发坯时间" align="center">
+        <el-table-column label="发坯时间" align="center" width="120">
           <template slot-scope="scope">
-            <a :href="'http://www.baidu.com?' + scope.row.id" target="_blank" style="color:blue;"></a>
+            <a :href="'http://www.baidu.com?' + scope.row.id" target="_blank" style="color:blue;" v-html="scope.row.shouPiDT"></a>
           </template>
         </el-table-column>
         <el-table-column label="纬纱" align="center" width="120">

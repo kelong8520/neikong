@@ -151,7 +151,7 @@ export default {
   data() {
     return {
       screenHeight: document.body.clientHeight, //屏幕高度
-      tableHeight: window.innerHeight - 200, //table高度
+      tableHeight: window.innerHeight - 150, //table高度
       choiceDate: "",
       colIndex: "",
       kindData: []
