@@ -8,13 +8,13 @@
         <el-form-item label="纬纱名称">
           <el-input v-model="ruleForm.val"></el-input>
         </el-form-item>
-        <el-form-item label="结存是否为零">
+        <!-- <el-form-item label="结存是否为零">
           <el-select v-model="ruleForm.isJieCun">
             <el-option label="全部" value></el-option>
             <el-option label="是" value="1"></el-option>
             <el-option label="否" value="0"></el-option>
           </el-select>
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item>
           <el-button type="primary" @click.native="calculateClick" class="button1">重新计算</el-button>
           <el-button type="primary" @click.native="searchClick" class="button1">检索</el-button>
@@ -101,14 +101,14 @@
           </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column label="备注" align="center" width="120">
+      <!-- <el-table-column prop="remarks" label="备注" align="center" width="120">
         <template slot-scope="scope">
           <div v-if="scope.$index == 0">{{scope.row.remarks}}</div>
           <div v-else>
             <el-input v-model="scope.row.remarks"></el-input>
           </div>
         </template>
-      </el-table-column>
+      </el-table-column> -->
     </el-table>
   </div>
 </template>

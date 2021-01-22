@@ -31,16 +31,16 @@
         </el-header>
 
         <el-main class="mainBackground">
-          <div class="pagetitle" v-if="$route.path =='/index'">内控及生产成本管理</div>
+          <div class="pagetitle" v-if="$route.path =='/首页'">内控及生产成本管理</div>
           <!-- <template v-if="flag"> -->
-            <!-- <router-view v-if="!$route.meta.keepAlive"></router-view> -->
-            <!-- <router-view v-if="$route.meta.keepAlive && flag"></router-view> -->
-            <!-- <router-view v-else-if="flag"></router-view> -->
-            <router-view v-if="flag"></router-view>
-            <!-- <keep-alive> -->
-              <!-- <router-view v-if="$route.meta.keepAlive"></router-view> -->
-              <!-- <router-view v-if="!$route.meta.keepAlive && flag"></router-view> -->
-            <!-- </keep-alive> -->
+          <!-- <router-view v-if="!$route.meta.keepAlive"></router-view> -->
+          <!-- <router-view v-if="$route.meta.keepAlive && flag"></router-view> -->
+          <!-- <router-view v-else-if="flag"></router-view> -->
+          <router-view v-if="flag"></router-view>
+          <!-- <keep-alive> -->
+          <!-- <router-view v-if="$route.meta.keepAlive"></router-view> -->
+          <!-- <router-view v-if="!$route.meta.keepAlive && flag"></router-view> -->
+          <!-- </keep-alive> -->
           <!-- </template> -->
         </el-main>
       </el-container>
@@ -72,119 +72,119 @@ export default {
           title: "1.1 财务基础信息",
           model: [
             {
-              title: "1.1.1财务基础档案",
+              title: "1.1.1 财务基础档案",
               name: "cwjcda",
               icon: "el-icon-document"
             },
             {
-              title: "1.1.2产品核价",
+              title: "1.1.2 产品核价",
               name: "cphj",
               icon: "el-icon-data-analysis"
             },
             {
-              title: "1.1.3月度实际发生费用",
+              title: "1.1.3 月度实际发生费用",
               name: "ydsjfsfy",
               icon: "el-icon-data-analysis"
             }
             // {
-            //   title: "1.1.4汇率维护",
+            //   title: "1.1.4 汇率维护",
             //   name: "hlwh",
             //   icon: "el-icon-data-analysis"
             // }
           ]
         },
         {
-          title: "1.2 分工序投入产出明细",
+          title: "1.2 分工序投入产出分析",
           model: [
             {
-              title: "1.2.1原料投入数据",
+              title: "1.2.1 原料投入数据",
               name: "yltr",
               icon: "el-icon-document"
             },
             {
-              title: "1.2.2辅料投入数据",
+              title: "1.2.2 辅料投入数据",
               name: "fltr",
               icon: "el-icon-document"
             },
             {
-              title: "1.2.3能耗投入数据",
+              title: "1.2.3 能耗投入数据",
               name: "nhtr",
               icon: "el-icon-document"
             }
           ]
         },
         {
-          title: "1.3 在途半制品盘存",
+          title: "1.3 在途半制品月度盘存",
           model: [
             {
-              title: "1.3.1浆染半制品盘点明细",
+              title: "1.3.1 浆染半制品盘点明细",
               name: "jrbzp",
               icon: "el-icon-document"
             },
             {
-              title: "1.3.2织造织轴盘点明细",
+              title: "1.3.2 织造织轴盘点明细",
               name: "zzzzpd",
               icon: "el-icon-document"
             },
             // {
-            //   title: "1.3.3织造纬纱盘点明细",
+            //   title: "1.3.3 织造纬纱盘点明细",
             //   name: "zzwspd",
             //   icon: "el-icon-document"
             // },
             {
-              title: "1.3.4织造坯布盘点明细",
+              title: "1.3.4 织造坯布盘点明细",
               name: "zzpbpd",
               icon: "el-icon-document"
             },
             {
-              title: "1.3.5后整半制品明细",
+              title: "1.3.5 后整半制品明细",
               name: "hzbzp",
               icon: "el-icon-document"
             }
           ]
         },
         {
-          title: "1.4 成品汇总及分析",
+          title: "1.4 成品投入产出汇总及分析",
           model: [
             {
-              title: "1.4.1原料分析",
+              title: "1.4.1 成品原料分析",
               name: "ylfx",
               icon: "el-icon-document"
             },
             {
-              title: "1.4.2辅料分析",
+              title: "1.4.2 成品辅料分析",
               name: "flfx",
               icon: "el-icon-document"
             },
             {
-              title: "1.4.3能耗分析",
+              title: "1.4.3 成品能耗分析",
               name: "nhfx",
               icon: "el-icon-document"
             }
           ]
         },
         {
-          title: "1.5 实际生产成本核算",
+          title: "1.5 实际生产费用",
           model: [
             // {
-            //   title: "1.5.1月度机物料费用",
-            //   name: "jwlfy",
-            //   icon: "el-icon-document"
-            // },
-            // {
-            //   title: "1.5.2月度人工费用",
+            //   title: "1.5.1 月度人工费用",
             //   name: "rgfy",
             //   icon: "el-icon-document"
             // },
+            // {
+            //   title: "1.5.2 订单别实际生产费用明细",
+            //   name: "jwlfy",
+            //   icon: "el-icon-document"
+            // },
             {
-              title: "1.5.3成本核算",
+              title: "1.5.3 成本核算",
               name: "cbhs",
               icon: "el-icon-document"
             }
           ]
         },
         {
-          title: "1.6 生产单耗环比分析",
+          title: "1.6 月度生产单耗环比分析",
           model: [
             {
               title: "1.6.1月度生产单耗环比分析",
@@ -226,7 +226,9 @@ export default {
       }
     }
   },
-  created() {},
+  // created() {
+  // //  this.loadpromiss();
+  // },
   mounted() {
     this.flag = true;
   }

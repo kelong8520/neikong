@@ -6,17 +6,15 @@ module.exports = {
   // webpack-dev-server 相关配置
   devServer: {
     open: true,
-    host: "192.168.5.105",
-    // host: "127.0.0.1",
-    port: 8521,
+    // host: "192.168.5.105",
+    host: "127.0.0.1",
+    port: 8080,
     https: false,
     hotOnly: false,
     before: () => { },
     proxy: {
       '/apis': {
-        // target: 'http://192.168.5.106:8110',  // target host 
         target: 'http://120.78.186.60:8110',  // target host 
-        // target: 'http://192.168.5.103:8080',
         ws: true,  // proxy websockets 
         changeOrigin: true,  // needed for virtual hosted sites
         pathRewrite: {

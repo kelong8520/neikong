@@ -17,13 +17,13 @@
         <el-form-item label="轴号">
           <el-input v-model="ruleForm.rollerNo"></el-input>
         </el-form-item>
-        <el-form-item label="结存是否为零">
+        <!-- <el-form-item label="结存是否为零">
           <el-select v-model="ruleForm.isJieCun">
             <el-option label="全部" value></el-option>
             <el-option label="是" value="1"></el-option>
             <el-option label="否" value="0"></el-option>
           </el-select>
-        </el-form-item>
+        </el-form-item>-->
         <el-form-item>
           <el-button type="primary" @click.native="calculateClick" class="button1">重新计算</el-button>
           <el-button type="primary" @click.native="searchClick" class="button1">检索</el-button>
@@ -55,42 +55,29 @@
           <span v-else>{{scope.$index}}</span>
         </template>
       </el-table-column>
+      <el-table-column prop="rollerNo" label="轴号" align="center" width="120"></el-table-column>
+      <el-table-column prop="batchNo" label="缸号" align="center" width="120"></el-table-column>
       <el-table-column prop="productionNo" label="生产单号" align="center" width="120"></el-table-column>
       <el-table-column prop="textileNo" label="品种" align="center" width="120"></el-table-column>
-      <el-table-column prop="zhiChengLv" label="织成率" align="center" width="120"></el-table-column>
-      <el-table-column prop="batchNo" label="缸号" align="center" width="120"></el-table-column>
-      <el-table-column prop="rollerNo" label="轴号" align="center" width="120"></el-table-column>
-      <el-table-column prop="jingShaGuiGe" label="经纱" align="center" width="120"></el-table-column>
+      <el-table-column prop="jingShaGuiGe" label="位置" align="center" width="120"></el-table-column>
       <el-table-column label="上机状态" align="center" width="120">
         <template slot-scope="scope">
-          <div>{{scope.row.zhiZaoBanZhiPinState == 0?"":scope.row.zhiZaoBanZhiPinState == 1?"存轴":scope.row.zhiZaoBanZhiPinState == 2?"未安排":scope.row.zhiZaoBanZhiPinState == 3?"待上机":"已上机"}}</div>
+          <div>{{scope.row.zhiZaoBanZhiPinState == 0?"":scope.row.zhiZaoBanZhiPinState == 1?"存轴":scope.row.zhiZaoBanZhiPinState == 2?"未安排":scope.row.zhiZaoBanZhiPinState == 3?"待上机":scope.row.zhiZaoBanZhiPinState == 4?"已上机":""}}</div>
         </template>
       </el-table-column>
       <el-table-column prop="realWeaveMachineNo" label="机台号" align="center" width="120"></el-table-column>
+      <el-table-column prop="panDianDate" label="盘点时间" align="center" width="120"></el-table-column>
       <el-table-column label="审批状态" align="center" width="120">
         <template slot-scope="scope">
           <div>{{scope.row.state == 0?"未审核":scope.row.state == 1?"已审核":""}}</div>
         </template>
       </el-table-column>
-      <el-table-column label="期初经轴信息" align="center">
-        <el-table-column prop="lengthQC" label="经轴长度(m)" align="center" width="120"></el-table-column>
-        <el-table-column prop="shaZhongQC" label="纱重(kg)" align="center" width="120"></el-table-column>
-      </el-table-column>
-      <el-table-column label="本期收入" align="center">
-        <el-table-column prop="lengthSR" label="经轴长度(m)" align="center" width="120"></el-table-column>
-        <el-table-column prop="shaZhongSR" label="纱重(kg)" align="center" width="120"></el-table-column>
-      </el-table-column>
-      <el-table-column label="本期耗用" align="center">
-        <el-table-column prop="lengthHY" label="经轴长度(m)" align="center" width="120"></el-table-column>
-        <el-table-column prop="shaZhongHY" label="折合纱重(kg)" align="center" width="120"></el-table-column>
-      </el-table-column>
       <el-table-column label="本期结存" align="center">
-        <el-table-column prop="lengthJC" label="经轴长度(m)" align="center" width="120"></el-table-column>
-        <el-table-column prop="shaZhongJC" label="折合纱重(kg)" align="center" width="120"></el-table-column>
-        <el-table-column prop="piLengthJC" label="坯布长度(m)" align="center" width="120"></el-table-column>
+        <el-table-column prop="lengthJC" label="轴长(m)" align="center" width="120"></el-table-column>
+        <el-table-column prop="shaZhongJC" label="纱重(kg)" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="实际盘点数量" align="center">
-        <el-table-column label="经轴长度(m)" align="center" width="120">
+        <el-table-column label="轴长(m)" align="center" width="120">
           <template slot-scope="scope">
             <div v-if="scope.$index == 0">{{scope.row.lengthReal}}</div>
             <div v-else>
@@ -98,19 +85,11 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="折合纱重(kg)" align="center" width="120">
+        <el-table-column label="纱重(kg)" align="center" width="120">
           <template slot-scope="scope">
             <div v-if="scope.$index == 0">{{scope.row.shaZhongReal}}</div>
             <div v-else>
               <el-input v-model="scope.row.shaZhongReal"></el-input>
-            </div>
-          </template>
-        </el-table-column>
-        <el-table-column label="坯布长度(m)" align="center" width="120">
-          <template slot-scope="scope">
-            <div v-if="scope.$index == 0">{{scope.row.piLengthReal}}</div>
-            <div v-else>
-              <el-input v-model="scope.row.piLengthReal"></el-input>
             </div>
           </template>
         </el-table-column>
@@ -137,14 +116,14 @@
           </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column label="备注" align="center" width="120">
+      <!-- <el-table-column prop="remarks" label="备注" align="center" width="120">
         <template slot-scope="scope">
           <div v-if="scope.$index == 0">{{scope.row.remarks}}</div>
           <div v-else>
             <el-input v-model="scope.row.remarks"></el-input>
           </div>
         </template>
-      </el-table-column>
+      </el-table-column> -->
     </el-table>
   </div>
 </template>
@@ -323,7 +302,7 @@ export default {
     var date = new Date();
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
-    month = month.toString().padStart(2, '0')
+    month = month.toString().padStart(2, "0");
     // var day = date.getDate();
     var time = year + "-" + month;
     this.$set(this.ruleForm, "choiceDate", time);
@@ -333,5 +312,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

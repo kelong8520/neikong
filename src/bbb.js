@@ -1,8 +1,4 @@
-import Vue from "vue";
-import Vuex from "vuex";
 import { asyncRoutes, constantRoutes, resetRouter } from '@/router'
-Vue.use(Vuex);
-
 
 function hasPermission(info, route) {
   let flag = false
@@ -33,19 +29,10 @@ export function filterAsyncRoutes(routes, info) {
 }
 
 const state = {
-  tabArr: [
-    {
-      name: "home",
-      title: "首页"
-    }
-  ],
-  tabName: "home",
   routes: [],
   allAuthInfo: []
-};
-
+}
 const mutations = {
-  // 权限
   UPDATE_AUTH_INFO: (state, info) => {
     state.allAuthInfo = info
     const accessedRoutes = filterAsyncRoutes(asyncRoutes, info)
@@ -54,28 +41,6 @@ const mutations = {
       redirect: '/404'
     }])
     state.routes = constantRoutes.concat(allRoute)
-  },
-  // 添加tab数组
-  addTabArr(state, model) {
-    state.tabArr.push(model)
-    if (model.productionNo) {
-      state.tabName = model.name + '?' + model.productionNo;
-    } else {
-      state.tabName = model.name;
-    }
-  },
-  // 删除tab数组
-  deleteTabArr(state, modelName) {
-    if (modelName.includes('?')) {
-      state.tabArr = state.tabArr.filter(item => !(item.name == modelName.split('?')[0] && item.productionNo == modelName.split('?')[1]))
-    } else {
-      state.tabArr = state.tabArr.filter(item => item.name != modelName)
-    }
-  },
-  // 修改tab页的活跃页索引
-  modifyTabName(state, name) {
-    state.tabName = name;
-    // console.log("store里面改了name",name)
   }
 }
 
@@ -85,10 +50,9 @@ const actions = {
   }
 }
 
-const store = new Vuex.Store({
+export default {
+  namespaced: true,
   state,
   mutations,
   actions
-});
-
-export default store;
+}

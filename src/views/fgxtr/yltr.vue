@@ -141,7 +141,7 @@
         </el-table-column>
       </el-table-column>
       <el-table-column label="后整投入产出信息" align="center">
-        <el-table-column label="入仓时间" align="center">
+        <el-table-column label="入仓时间" align="center" width="120">
           <template slot-scope="scope">
             <a
               :href="'http://www.baidu.com?' + scope.row.id"

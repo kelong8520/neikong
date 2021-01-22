@@ -14,6 +14,13 @@
         <el-form-item label="成品入仓时间">
           <el-date-picker value-format="yyyy-MM-dd" v-model="ruleForm.chengPinRuCangDate" type="date"></el-date-picker>
         </el-form-item>
+        <el-form-item label="是否为成品">
+          <el-select v-model="ruleForm.isRuCang">
+            <el-option label="全部" value></el-option>
+            <el-option label="是" value="1"></el-option>
+            <el-option label="否" value="0"></el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item>
           <el-button type="primary" @click.native="searchClick" class="button1">检索</el-button>
         </el-form-item>

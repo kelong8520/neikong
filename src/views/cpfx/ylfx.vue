@@ -17,6 +17,13 @@
         <el-form-item label="纬纱">
           <el-input v-model="ruleForm.weftName"></el-input>
         </el-form-item>
+        <el-form-item label="是否为成品">
+          <el-select v-model="ruleForm.isRuCang">
+            <el-option label="全部" value></el-option>
+            <el-option label="是" value="1"></el-option>
+            <el-option label="否" value="0"></el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item>
           <el-button type="primary" @click.native="searchClick" class="button1">检索</el-button>
         </el-form-item>
@@ -87,13 +94,13 @@
         </template>
       </el-table-column>
       <el-table-column label="织成率" align="center">
-        <el-table-column prop="gyZhiBuZhiChengLv" label="标准(%)" align="center" width="120"></el-table-column>
-        <el-table-column prop="zhiBuZhiChengLv" label="实绩(%)" align="center" width="120"></el-table-column>
+        <el-table-column prop="zhiBuZhiChengLv" label="标准(%)" align="center" width="120"></el-table-column>
+        <el-table-column prop="shiJiZhiChengLv" label="实绩(%)" align="center" width="120"></el-table-column>
         <el-table-column prop="zhiZaoPianCha" label="偏差(%)" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="制成率" align="center">
-        <el-table-column prop="gyHouZhengZhiChengLv" label="标准(%)" align="center" width="120"></el-table-column>
-        <el-table-column prop="houZhengZhiChengLv" label="实绩(%)" align="center" width="120"></el-table-column>
+        <el-table-column prop="houZhengZhiChengLv" label="标准(%)" align="center" width="120"></el-table-column>
+        <el-table-column prop="shiJiZhiChengLvHZ" label="实绩(%)" align="center" width="120"></el-table-column>
         <el-table-column prop="houZhengPianCha" label="偏差(%)" align="center" width="120"></el-table-column>
       </el-table-column>
       <el-table-column label="经纱百码用量" align="center">

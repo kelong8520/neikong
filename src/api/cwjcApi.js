@@ -45,7 +45,7 @@ export const upDateStopBaseDangAn = (data) => {
 
 
 
-//  1.2 产品核价 
+//  1.1.2 产品核价 
 //  加载主界面信息
 export const newERP = (params) => {
     return api({
@@ -122,7 +122,7 @@ export const addMonthExpenses = (data) => {
 
 
 
-// 1.4 汇率信息维护
+// 1.1.4 汇率信息维护
 // 加载所有汇率信息
 export const getAllExchangerate = (params) => {
     return api({
